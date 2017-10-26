@@ -198,8 +198,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\db\dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
       <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\db\dbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

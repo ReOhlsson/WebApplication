@@ -13,10 +13,10 @@ namespace WebApplication.Models.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbContext : DbContext
+    public partial class tvrutanEntities : DbContext
     {
-        public DbContext()
-            : base("name=DbContext")
+        public tvrutanEntities()
+            : base("name=tvrutanEntities")
         {
         }
     

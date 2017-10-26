@@ -296,7 +296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="tvrutanEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Channel" EntityType="Self.Channel" />
           <EntitySet Name="Credits" EntityType="Self.Credits" />
@@ -329,7 +329,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="tvrutanModelStoreContainer" CdmEntityContainer="DbContext">
+        <EntityContainerMapping StorageEntityContainer="tvrutanModelStoreContainer" CdmEntityContainer="tvrutanEntities">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="tvrutanModel.Category">
               <MappingFragment StoreEntitySet="Category">
