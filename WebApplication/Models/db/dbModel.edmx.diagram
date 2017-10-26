@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0a1db4cc3328409882891f40de4842b4" Name="Diagram1">
-        <EntityTypeShape EntityType="tvrutanModel.Category" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tvrutanModel.Category" Width="1.5" PointX="7.125" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="tvrutanModel.Channel" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="tvrutanModel.Credits" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tvrutanModel.Credits" Width="1.5" PointX="4.875" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="tvrutanModel.Program" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="tvrutanModel.Program_Category" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="tvrutanModel.Program_Credits" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tvrutanModel.Program_Credits" Width="1.5" PointX="7.625" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="tvrutanModel.FK_Category_Program_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="tvrutanModel.FK_Channel_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="tvrutanModel.FK_Credits_Program_ToTable" ManuallyRouted="false" />
