@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +11,7 @@ namespace WebApplication.Controllers
     {
         public ActionResult Index()
         {
+            var json = new WebClient().DownloadString(@"http://json.xmltv.se/tv8.se_2017-10-29.js.gz");
             return View();
         }
 
