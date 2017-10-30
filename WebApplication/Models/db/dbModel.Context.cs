@@ -13,10 +13,10 @@ namespace WebApplication.Models.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class tvrutanEntities : DbContext
+    public partial class TvRutanEntities : DbContext
     {
-        public tvrutanEntities()
-            : base("name=tvrutanEntities")
+        public TvRutanEntities()
+            : base("name=TvRutanEntities")
         {
         }
     
@@ -25,11 +25,6 @@ namespace WebApplication.Models.db
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Channel> Channel { get; set; }
-        public virtual DbSet<Credits> Credits { get; set; }
         public virtual DbSet<Program> Program { get; set; }
-        public virtual DbSet<Program_Category> Program_Category { get; set; }
-        public virtual DbSet<Program_Credits> Program_Credits { get; set; }
     }
 }

@@ -4,395 +4,67 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="tvrutanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Channel">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Url" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Credits">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Firstname" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Lastname" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Type" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="TvRutanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Program">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Start_time" Type="time" Precision="7" Nullable="false" />
           <Property Name="End_time" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Rating" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Subtitle" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Episode_number" Type="int" Nullable="false" />
-          <Property Name="Url" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Video" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Country" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Channel" Type="int" Nullable="false" />
+          <Property Name="Channel" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Click" Type="int" Nullable="false" />
+          <Property Name="Most_clicked" Type="bit" Nullable="false" />
+          <Property Name="Editor_recommendation" Type="bit" Nullable="false" />
+          <Property Name="Picture" Type="nchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Program_Category">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Category_id" />
-            <PropertyRef Name="Program_id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Category_id" Type="int" Nullable="false" />
-          <Property Name="Program_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Program_Credits">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Credits_id" />
-            <PropertyRef Name="Program_id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Role_Firstname" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Role_Lastname" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Credits_id" Type="int" Nullable="false" />
-          <Property Name="Program_id" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Category_Program_ToTable">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Program_Category" Type="Self.Program_Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Category">
-              <PropertyRef Name="Category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Channel_ToTable">
-          <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
-          <End Role="Program" Type="Self.Program" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Channel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program">
-              <PropertyRef Name="Channel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Credits_Program_ToTable">
-          <End Role="Credits" Type="Self.Credits" Multiplicity="1" />
-          <End Role="Program_Credits" Type="Self.Program_Credits" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Credits">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Credits">
-              <PropertyRef Name="Credits_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program_Category_ToTable">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Program_Category" Type="Self.Program_Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Category">
-              <PropertyRef Name="Program_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program_Credits_ToTable">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Program_Credits" Type="Self.Program_Credits" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Credits">
-              <PropertyRef Name="Program_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="tvrutanModelStoreContainer">
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Credits" EntityType="Self.Credits" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="TvRutanModelStoreContainer">
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Program_Category" EntityType="Self.Program_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Program_Credits" EntityType="Self.Program_Credits" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Category_Program_ToTable" Association="Self.FK_Category_Program_ToTable">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Program_Category" EntitySet="Program_Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Channel_ToTable" Association="Self.FK_Channel_ToTable">
-            <End Role="Channel" EntitySet="Channel" />
-            <End Role="Program" EntitySet="Program" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Credits_Program_ToTable" Association="Self.FK_Credits_Program_ToTable">
-            <End Role="Credits" EntitySet="Credits" />
-            <End Role="Program_Credits" EntitySet="Program_Credits" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program_Category_ToTable" Association="Self.FK_Program_Category_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Program_Category" EntitySet="Program_Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program_Credits_ToTable" Association="Self.FK_Program_Credits_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Program_Credits" EntitySet="Program_Credits" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="tvrutanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Program_Category" Relationship="Self.FK_Category_Program_ToTable" FromRole="Category" ToRole="Program_Category" />
-        </EntityType>
-        <EntityType Name="Channel">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Url" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Program" Relationship="Self.FK_Channel_ToTable" FromRole="Channel" ToRole="Program" />
-        </EntityType>
-        <EntityType Name="Credits">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Program_Credits" Relationship="Self.FK_Credits_Program_ToTable" FromRole="Credits" ToRole="Program_Credits" />
-        </EntityType>
+      <Schema Namespace="TvRutanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Program">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Start_time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="End_time" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Subtitle" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Episode_number" Type="Int32" Nullable="false" />
-          <Property Name="Url" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Video" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Channel" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Channel1" Relationship="Self.FK_Channel_ToTable" FromRole="Program" ToRole="Channel" />
-          <NavigationProperty Name="Program_Category" Relationship="Self.FK_Program_Category_ToTable" FromRole="Program" ToRole="Program_Category" />
-          <NavigationProperty Name="Program_Credits" Relationship="Self.FK_Program_Credits_ToTable" FromRole="Program" ToRole="Program_Credits" />
+          <Property Name="Channel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Click" Type="Int32" Nullable="false" />
+          <Property Name="Most_clicked" Type="Boolean" Nullable="false" />
+          <Property Name="Editor_recommendation" Type="Boolean" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="Program_Category">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Category_id" />
-            <PropertyRef Name="Program_id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Category_id" Type="Int32" Nullable="false" />
-          <Property Name="Program_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Category_Program_ToTable" FromRole="Program_Category" ToRole="Category" />
-          <NavigationProperty Name="Program" Relationship="Self.FK_Program_Category_ToTable" FromRole="Program_Category" ToRole="Program" />
-        </EntityType>
-        <EntityType Name="Program_Credits">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Credits_id" />
-            <PropertyRef Name="Program_id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role_Firstname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Role_Lastname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Credits_id" Type="Int32" Nullable="false" />
-          <Property Name="Program_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Credits" Relationship="Self.FK_Credits_Program_ToTable" FromRole="Program_Credits" ToRole="Credits" />
-          <NavigationProperty Name="Program" Relationship="Self.FK_Program_Credits_ToTable" FromRole="Program_Credits" ToRole="Program" />
-        </EntityType>
-        <Association Name="FK_Category_Program_ToTable">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Program_Category" Type="Self.Program_Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Category">
-              <PropertyRef Name="Category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Channel_ToTable">
-          <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
-          <End Role="Program" Type="Self.Program" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Channel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program">
-              <PropertyRef Name="Channel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Credits_Program_ToTable">
-          <End Role="Credits" Type="Self.Credits" Multiplicity="1" />
-          <End Role="Program_Credits" Type="Self.Program_Credits" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Credits">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Credits">
-              <PropertyRef Name="Credits_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program_Category_ToTable">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Program_Category" Type="Self.Program_Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Category">
-              <PropertyRef Name="Program_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program_Credits_ToTable">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Program_Credits" Type="Self.Program_Credits" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Program_Credits">
-              <PropertyRef Name="Program_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="tvrutanEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Channel" EntityType="Self.Channel" />
-          <EntitySet Name="Credits" EntityType="Self.Credits" />
+        <EntityContainer Name="TvRutanEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Program" EntityType="Self.Program" />
-          <EntitySet Name="Program_Category" EntityType="Self.Program_Category" />
-          <EntitySet Name="Program_Credits" EntityType="Self.Program_Credits" />
-          <AssociationSet Name="FK_Category_Program_ToTable" Association="Self.FK_Category_Program_ToTable">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Program_Category" EntitySet="Program_Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Channel_ToTable" Association="Self.FK_Channel_ToTable">
-            <End Role="Channel" EntitySet="Channel" />
-            <End Role="Program" EntitySet="Program" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Credits_Program_ToTable" Association="Self.FK_Credits_Program_ToTable">
-            <End Role="Credits" EntitySet="Credits" />
-            <End Role="Program_Credits" EntitySet="Program_Credits" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program_Category_ToTable" Association="Self.FK_Program_Category_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Program_Category" EntitySet="Program_Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program_Credits_ToTable" Association="Self.FK_Program_Credits_ToTable">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Program_Credits" EntitySet="Program_Credits" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="tvrutanModelStoreContainer" CdmEntityContainer="tvrutanEntities">
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="tvrutanModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Channel">
-            <EntityTypeMapping TypeName="tvrutanModel.Channel">
-              <MappingFragment StoreEntitySet="Channel">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Credits">
-            <EntityTypeMapping TypeName="tvrutanModel.Credits">
-              <MappingFragment StoreEntitySet="Credits">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="TvRutanModelStoreContainer" CdmEntityContainer="TvRutanEntities">
           <EntitySetMapping Name="Program">
-            <EntityTypeMapping TypeName="tvrutanModel.Program">
+            <EntityTypeMapping TypeName="TvRutanModel.Program">
               <MappingFragment StoreEntitySet="Program">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Start_time" ColumnName="Start_time" />
                 <ScalarProperty Name="End_time" ColumnName="End_time" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
-                <ScalarProperty Name="Episode_number" ColumnName="Episode_number" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Video" ColumnName="Video" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Channel" ColumnName="Channel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Program_Category">
-            <EntityTypeMapping TypeName="tvrutanModel.Program_Category">
-              <MappingFragment StoreEntitySet="Program_Category">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
-                <ScalarProperty Name="Program_id" ColumnName="Program_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Program_Credits">
-            <EntityTypeMapping TypeName="tvrutanModel.Program_Credits">
-              <MappingFragment StoreEntitySet="Program_Credits">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Role_Firstname" ColumnName="Role_Firstname" />
-                <ScalarProperty Name="Role_Lastname" ColumnName="Role_Lastname" />
-                <ScalarProperty Name="Credits_id" ColumnName="Credits_id" />
-                <ScalarProperty Name="Program_id" ColumnName="Program_id" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Most_clicked" ColumnName="Most_clicked" />
+                <ScalarProperty Name="Editor_recommendation" ColumnName="Editor_recommendation" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
