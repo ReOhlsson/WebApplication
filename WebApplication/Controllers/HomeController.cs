@@ -5,17 +5,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication.Data;
 using WebApplication.Models;
+using WebApplication.Models.ViewModels;
 
 namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        
+
         public ActionResult Index()
         {
-            var json = new WebClient().DownloadString(@"http://json.xmltv.se/svt1.svt.se_2017-10-30.js.gz");
-            JsonProgram jp = JsonConvert.DeserializeObject<JsonProgram>(json);
-            return View();
+            IndexHomeVM indexHome = new IndexHomeVM();
+            return View(programList);
         }
 
         public ActionResult About()
