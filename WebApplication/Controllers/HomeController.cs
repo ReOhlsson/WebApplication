@@ -18,7 +18,7 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             IndexHomeVM indexHome = new IndexHomeVM();
-            return View(programList);
+            return View(indexHome);
         }
 
         public ActionResult About()
