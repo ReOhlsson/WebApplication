@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -32,6 +33,15 @@ namespace WebApplication.Data
             JsonProgram jp = JsonConvert.DeserializeObject<JsonProgram>(json);
 
             jsonList.Add(jp);
+
+
+
+            var culture = new System.Globalization.CultureInfo("sv-SE");
+            var day = culture.DateTimeFormat.GetDayName(DateTime.Today.DayOfWeek);
+
+            DateTime d = DateTime.Today;
+            string dt = DateTimeFormatInfo.CurrentInfo.GetDayName(d.DayOfWeek);
+
         }
     }
 }
