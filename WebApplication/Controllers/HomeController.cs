@@ -17,7 +17,9 @@ namespace WebApplication.Controllers
 
         public ActionResult Index()
         {
-            IndexHomeVM indexHome = new IndexHomeVM();
+            DateTime dt = DateTime.Now;
+            var indexHome = new IndexHomeVM();
+            indexHome.GetAllProgramByDate(dt);
             return View(indexHome);
         }
 

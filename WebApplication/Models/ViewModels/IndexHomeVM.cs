@@ -19,7 +19,10 @@ namespace WebApplication.Models.ViewModels
 
         public IndexHomeVM()
         {
-            DateTime date = DateTime.Now;
+            
+        }
+        public void GetAllProgramByDate(DateTime date)
+        {
             var dateNow = date.ToShortDateString();
             ProgramOperations po;
             po = new ProgramOperations(dateNow);
@@ -27,6 +30,7 @@ namespace WebApplication.Models.ViewModels
 
             SeperateProgramList();
         }
+
         private void SeperateProgramList()
         {
             listSvt = programList.Where(x => x.jsontv.programme.All(s => s.channel.Contains("svt1.svt.se"))).ToList();
@@ -39,11 +43,6 @@ namespace WebApplication.Models.ViewModels
             Programme js = new Programme();
 
             List<JsonProgram> jpList = new List<JsonProgram>();
-
-            //jpList = programList.Where(x => x.jsontv.programme.All(s => s.title.sv == title)).ToList();
-
-            //js = (Programme)jpList.First(p => p.jsontv.programme.First(r => r.start == starttime));
-
 
             var item = programList.SelectMany(a => a.jsontv.programme).FirstOrDefault(b => b.title.sv == title && b.start == starttime);
 
