@@ -13,19 +13,21 @@ namespace WebApplication.Models.ViewModels
         public List<JsonProgram> listSvt { get; set; } = new List<JsonProgram>();
         public List<JsonProgram> listTv4 { get; set; } = new List<JsonProgram>();
         public List<JsonProgram> listTv3 { get; set; } = new List<JsonProgram>();
+        public List<Days> listOfDays { get; set; } = new List<Days>();
         //public User user { get; set; }
 
         private List<JsonProgram> programList = new List<JsonProgram>();
 
         public IndexHomeVM()
         {
-            
+            DaysData dd = new DaysData();
+            listOfDays = dd.GetAllDays();
         }
-        public void GetAllProgramByDate(DateTime date)
+        public void GetAllProgramByDate(string date)
         {
-            var dateNow = date.ToShortDateString();
+            //var dateNow = date.ToShortDateString();
             ProgramOperations po;
-            po = new ProgramOperations(dateNow);
+            po = new ProgramOperations(date);
             programList = po.GetAllPrograms();
 
             SeperateProgramList();
@@ -40,11 +42,13 @@ namespace WebApplication.Models.ViewModels
 
         public Programme GetProgramDetails(string title, string starttime)
         {
+            ProgramOperations po = new ProgramOperations("2017-10-31");
             Programme js = new Programme();
 
             List<JsonProgram> jpList = new List<JsonProgram>();
+            jpList = po.GetAllPrograms();
 
-            var item = programList.SelectMany(a => a.jsontv.programme).FirstOrDefault(b => b.title.sv == title && b.start == starttime);
+            var item = jpList.SelectMany(a => a.jsontv.programme).FirstOrDefault(b => b.title.sv == title && b.start == starttime);
 
             return item;
         }

@@ -19,7 +19,7 @@ namespace WebApplication.Controllers
         {
             DateTime dt = DateTime.Now;
             var indexHome = new IndexHomeVM();
-            indexHome.GetAllProgramByDate(dt);
+            indexHome.GetAllProgramByDate("2017-10-31");
             return View(indexHome);
         }
 
@@ -43,6 +43,14 @@ namespace WebApplication.Controllers
             var model = ivm.GetProgramDetails(title, starttime);
 
             return PartialView("PwPopup", model);
+        }
+        public ActionResult Shows(string id)
+        {
+            var indexHome = new IndexHomeVM();
+            indexHome.GetAllProgramByDate(id);
+
+            return PartialView(indexHome);
+
         }
     }
 }

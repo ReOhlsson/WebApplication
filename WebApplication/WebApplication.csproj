@@ -152,10 +152,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\DaysData.cs" />
     <Compile Include="Data\ProgramOperations.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Days.cs" />
     <Compile Include="Models\db\dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,6 +221,7 @@
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\getdays.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -246,6 +249,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\PartialView\_PopupProgramPW.cshtml" />
     <Content Include="Views\Shared\PwPopup.cshtml" />
+    <Content Include="Views\Home\Shows.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

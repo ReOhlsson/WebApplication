@@ -15,51 +15,18 @@
         <nav id="navday">
             <a href="#" id="menu-days-icon"></a>
             <ul class="menudays">
-                <li><a href=""></a></li>
-                <li><a href="">Lördag</a></li>
-                <li><a href="">Igår</a></li>
-                <li><a href=""<b>Idag </b></a></li>
-                <li><a href="">Imorgon</a></li>
-                <li><a href="">Onsdag</a></li>
-                <li><a href="">Torsdag</a></li>
+                @foreach (var item in Model.listOfDays)
+                {
+                    <li><a href="" class="showDayShow" value ="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</a></li>
+                }
+                
             </ul>
         </nav>
     </div>
 
-    <div class="col-md-4">
-        <h2>Svt1</h2>
-        @foreach (var item in Model.listSvt)
-        {
-            foreach (var program in item.jsontv.programme)
-            {
-                <p>@program.title.sv</p>
-            }
-        }
+    <div class="showContainer">
+        @Html.Partial("Shows")
     </div>
-    <div class="col-md-4">
-        <h2>TV4</h2>
-        <ul class="program">
-            @foreach (var item in Model.listTv4)
-            {
-                foreach (var program in item.jsontv.programme)
-                {
-                    <li><a class="programLink" id="@program.title.sv", value="@program.start">@program.start   @program.title.sv</a></li>
-                }
-            }
-        </ul>
-
-    </div>
-    <div class="col-md-4">
-        <h2>TV3</h2>
-        @foreach (var item in Model.listTv3)
-        {
-            foreach (var program in item.jsontv.programme)
-            {
-                <p>@program.title.sv</p>
-            }
-        }
-    </div>
-
     <div id="programPopup">
     </div>
 </div>
