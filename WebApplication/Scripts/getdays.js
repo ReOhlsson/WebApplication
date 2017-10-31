@@ -1,9 +1,9 @@
 ﻿$('.showDayShow').click(function (e) {
-    debugger
+
     var category = this.getAttribute("value");
     $.ajax({
         type: "GET",
-        url: "/home/shows",
+        url: "/home/Shows",
         data: { id: category },
         success: function (data) {
             $(".showContainer").html(data);
