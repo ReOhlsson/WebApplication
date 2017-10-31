@@ -1,0 +1,21 @@
+﻿@model WebApplication.Models.JsonModel.Programme
+
+<div id="popupMovie" class="overlay">
+    <div class="popup">
+        <h3>@Model.title</h3>
+
+        <a class="close" href="">&times;</a>
+        <div class="content">
+            <hr class="footerhr" />
+            @Model.date Starttid: @Model.start - @Model.stop<br><br>
+
+            @Model.desc<br><br>
+
+            @foreach (var item in Model.category.en)
+            {
+                <i>item</i>
+            }
+
+        </div>
+    </div>
+</div>

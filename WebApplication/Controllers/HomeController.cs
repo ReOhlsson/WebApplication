@@ -34,5 +34,13 @@ namespace WebApplication.Controllers
 
             return View();
         }
+
+        public ActionResult Program(string title, string starttime)
+        {
+            IndexHomeVM ivm = new IndexHomeVM();
+            var model = ivm.GetProgramDetails(title, starttime);
+
+            return PartialView("PwPopup", model);
+        }
     }
 }
