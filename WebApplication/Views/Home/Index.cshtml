@@ -1,7 +1,4 @@
-﻿@*@{
-        ViewBag.Title = "Home Page";
-    }*@
-@model WebApplication.Models.ViewModels.IndexHomeVM
+﻿@model List<RepoAndUnitOfWorkJSON.Entites.Programme>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -15,9 +12,9 @@
         <nav id="navday">
             <a href="#" id="menu-days-icon"></a>
             <ul class="menudays">
-                @foreach (var item in Model.listOfDays)
+                @foreach (var item in Model)
                 {
-                    <li><a class="showDayShow" value ="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</a></li>
+                    <li><a class="showDayShow" @*value ="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()*@></a></li>
                 }
                 
             </ul>

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication.Models.JsonModel
+namespace RepoAndUnitOfWorkJSON.Entites
 {
-    public class Description
+    public class Title
     {
         public string sv { get; set; }
     }

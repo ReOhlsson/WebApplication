@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication.Models.JsonModel;
 
-namespace WebApplication.Models
+namespace RepoAndUnitOfWorkJSON.Entites
 {
     public class JsonTv
     {

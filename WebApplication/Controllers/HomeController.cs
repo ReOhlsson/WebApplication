@@ -8,49 +8,50 @@ using System.Web.Mvc;
 using WebApplication.Data;
 using WebApplication.Models;
 using WebApplication.Models.ViewModels;
+using RepoAndUnitOfWork.Entities;
+using RepoAndUnitOfWorkJSON.Concrete;
+using RepoAndUnitOfWorkJSON.Entites;
 
 namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        
 
+        UnitOfWorkJson jsUnitOfWork = new UnitOfWorkJson();
         public ActionResult Index()
         {
-            DateTime dt = DateTime.Now;
-            var indexHome = new IndexHomeVM();
-            indexHome.GetAllProgramByDate("2017-10-31");
-            return View(indexHome);
+            var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
+            return View(model);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Program(string title, string starttime)
-        {
-            IndexHomeVM ivm = new IndexHomeVM();
-            var model = ivm.GetProgramDetails(title, starttime);
+        //public ActionResult Program(string title, string starttime)
+        //{
+        //    IndexHomeVM ivm = new IndexHomeVM();
+        //    var model = ivm.GetProgramDetails(title, starttime);
 
-            return PartialView("PwPopup", model);
-        }
-        public ActionResult Shows(string id)
-        {
-            var indexHome = new IndexHomeVM();
-            indexHome.GetAllProgramByDate(id);
+        //    return PartialView("PwPopup", model);
+        //}
+        //public ActionResult Shows(string id)
+        //{
+        //    var indexHome = new IndexHomeVM();
+        //    indexHome.GetAllProgramByDate(id);
 
-            return PartialView(indexHome);
+        //    return PartialView(indexHome);
 
-        }
+        //}
     }
 }
