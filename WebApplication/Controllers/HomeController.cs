@@ -55,7 +55,7 @@ namespace WebApplication.Controllers
             return PartialView("Shows", indexHome);
         }
 
-        public ActionResult ShowsPop(string program)
+        public ActionResult ShowsPop(string title, string start, string stop, string channel)
         {
             Program p = new Program();
             //string time = array[1];
