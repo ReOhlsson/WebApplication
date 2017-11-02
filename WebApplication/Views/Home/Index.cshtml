@@ -1,6 +1,7 @@
 ﻿@model List<RepoAndUnitOfWorkJSON.Entites.Programme>
 
 <div class="popularShows">
+    @Html.Action("LoadPopularPrograms")
 </div>
 
 <div class="row">
@@ -19,7 +20,6 @@
     </div>
     <div class="partialViewHolder">
             @Html.Partial("ContainerForChannel")
-
         </div>
         <div id="programPopup">
     </div>

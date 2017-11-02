@@ -24,6 +24,10 @@ namespace RepoAndUnitOfWork.Abstract
         //Method to delete a row from the table
         void Delete(T entity);
 
+        //Method to get list of programs by starttime and title
         IEnumerable<T> GetByStartTimeAndTitle(Expression<Func<T, bool>> predicate);
+
+        //Method to get list of most popular programs
+        IEnumerable<T> GetMostPopular(Expression<Func<T, bool>> predicate);
     }
 }

@@ -58,12 +58,10 @@ namespace WebApplication.Controllers
         public ActionResult ShowsPop(string title, string start, string stop, string channel)
         {
             Program p = new Program();
-
             var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == start);
 
             if (!test.Any())
             {
-
                 p.Title = title;
                 p.Start_time = start;
                 p.End_time = stop;
@@ -75,14 +73,22 @@ namespace WebApplication.Controllers
             }
             else
             {
-                var i = test.Sum(x => x.Click);
-                p = (Program)test;
-                p.Click = i + 1;
+                p = (Program)test.FirstOrDefault();
+                p.Click += 1;
                 unitOfWork.ProgramRepository.Update(p);
                 unitOfWork.Commit();
             }
 
-            return PartialView("Shows");
+            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
+
+            return PartialView("PopularShows", indexHome);
+        }
+
+        public ActionResult LoadPopularPrograms()
+        {
+            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
+
+            return PartialView("PopularShows", indexHome);
         }
 
         //public ActionResult PopularShows(string channel, string date, string title)
