@@ -55,33 +55,39 @@ namespace WebApplication.Controllers
             return PartialView("Shows", indexHome);
         }
 
-        public ActionResult ShowsPop(string[] array)
+        public ActionResult ShowsPop(string program)
         {
             Program p = new Program();
-            string time = array[1];
-            string title = array[0];
+            //string time = array[1];
+            //string title = array[0];
 
-            var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == time);
+            //var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == time);
 
-            if (!test.Any())
-            {
-                p.Title = array[0];
-                p.Start_time = array[1];
-                p.End_time = array[2];
-                p.Channel = array[3];
-                p.Click = 1;
+            //if (!test.Any())
+            //{
+            //    var titleArray = array[0];
+            //    var timeStartArray = array[1];
+            //    var timeEndArray = array[2];
+            //    var channelArray = array[3];
+
+
+            //    p.Title = titleArray;
+            //    p.Start_time = timeStartArray;
+            //    p.End_time = timeEndArray;
+            //    p.Channel = channelArray;
+            //    p.Click = 1;
                
-                unitOfWork.ProgramRepository.Create(p);
-                unitOfWork.Commit();
-            }
-            else
-            {
-                var i = test.Sum(x => x.Click);
-                p = (Program)test;
-                p.Click = i + 1;
-                unitOfWork.ProgramRepository.Update(p);
-                unitOfWork.Commit();
-            }
+            //    unitOfWork.ProgramRepository.Create(p);
+            //    unitOfWork.Commit();
+            //}
+            //else
+            //{
+            //    var i = test.Sum(x => x.Click);
+            //    p = (Program)test;
+            //    p.Click = i + 1;
+            //    unitOfWork.ProgramRepository.Update(p);
+            //    unitOfWork.Commit();
+            //}
 
             return PartialView("Shows");
         }
