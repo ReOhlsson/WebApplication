@@ -58,36 +58,29 @@ namespace WebApplication.Controllers
         public ActionResult ShowsPop(string title, string start, string stop, string channel)
         {
             Program p = new Program();
-            //string time = array[1];
-            //string title = array[0];
 
-            //var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == time);
+            var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == start);
 
-            //if (!test.Any())
-            //{
-            //    var titleArray = array[0];
-            //    var timeStartArray = array[1];
-            //    var timeEndArray = array[2];
-            //    var channelArray = array[3];
+            if (!test.Any())
+            {
 
+                p.Title = title;
+                p.Start_time = start;
+                p.End_time = stop;
+                p.Channel = channel;
+                p.Click = 1;
 
-            //    p.Title = titleArray;
-            //    p.Start_time = timeStartArray;
-            //    p.End_time = timeEndArray;
-            //    p.Channel = channelArray;
-            //    p.Click = 1;
-               
-            //    unitOfWork.ProgramRepository.Create(p);
-            //    unitOfWork.Commit();
-            //}
-            //else
-            //{
-            //    var i = test.Sum(x => x.Click);
-            //    p = (Program)test;
-            //    p.Click = i + 1;
-            //    unitOfWork.ProgramRepository.Update(p);
-            //    unitOfWork.Commit();
-            //}
+                unitOfWork.ProgramRepository.Create(p);
+                unitOfWork.Commit();
+            }
+            else
+            {
+                var i = test.Sum(x => x.Click);
+                p = (Program)test;
+                p.Click = i + 1;
+                unitOfWork.ProgramRepository.Update(p);
+                unitOfWork.Commit();
+            }
 
             return PartialView("Shows");
         }
