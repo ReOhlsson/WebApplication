@@ -20,8 +20,8 @@ namespace WebApplication.Controllers
         UnitOfWorkJson jsUnitOfWork = new UnitOfWorkJson();
         public ActionResult Index()
         {
-            var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
-            return View(model);
+            //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
+            return View();
         }
 
         //public ActionResult About()
@@ -45,13 +45,12 @@ namespace WebApplication.Controllers
 
         //    return PartialView("PwPopup", model);
         //}
-        //public ActionResult Shows(string id)
-        //{
-        //    var indexHome = new IndexHomeVM();
-        //    indexHome.GetAllProgramByDate(id);
 
-        //    return PartialView(indexHome);
+        public ActionResult Shows(string channel, string date = "2017-11-01")
+        {
+            var indexHome = jsUnitOfWork.ProgramRepository.ListOfJsonProgram(date, channel);
 
-        //}
+            return PartialView("Shows", indexHome);
+        }
     }
 }

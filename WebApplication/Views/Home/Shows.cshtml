@@ -1,21 +1,21 @@
 ﻿<div class="col-md-4">
     <h2>Svt1</h2>
-    @foreach (var item in Model.listSvt)
-    {
-        foreach (var program in item.jsontv.programme)
+    <ul class="program">
+        @foreach (var item in Model)
         {
-            <p>@program.title.sv</p>
+            @*<p>@item.title.sv</p>*@
+            <li><a class="programLink" id="@item.title.sv" , value="@item.start">@item.start   @item.title.sv</a></li>
         }
-    }
+   </ul>
 </div>
-<div class="col-md-4">
+@*<div class="col-md-4">
     <h2>TV4</h2>
     <ul class="program">
         @foreach (var item in Model.listTv4)
             {
                 foreach (var program in item.jsontv.programme)
                 {
-                <li><a class="programLink" id="@program.title.sv" , value="@program.start">@program.start   @program.title.sv</a></li>
+                
             }
         }
     </ul>
@@ -30,6 +30,6 @@
             <p>@program.title.sv</p>
         }
     }
-</div>
+</div>*@
 
 

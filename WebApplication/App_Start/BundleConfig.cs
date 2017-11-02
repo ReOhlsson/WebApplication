@@ -11,6 +11,9 @@ namespace WebApplication
             bundles.Add(new ScriptBundle("~/bundles/changeday").Include(
                         "~/Scripts/getdays.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/getchannels").Include(
+                        "~/Scripts/getchannels.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
