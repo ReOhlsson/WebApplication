@@ -4,32 +4,9 @@
         @foreach (var item in Model)
         {
             @*<p>@item.title.sv</p>*@
-            <li><a class="programLink" id="@item.title.sv" , value="@item.start">@item.start   @item.title.sv</a></li>
+            <li><a class="programLink" id="@item.title.sv" , value="@item.title.sv/@item.start/@item.stop/@item.channel">@item.start   @item.title.sv</a></li>
         }
    </ul>
 </div>
-@*<div class="col-md-4">
-    <h2>TV4</h2>
-    <ul class="program">
-        @foreach (var item in Model.listTv4)
-            {
-                foreach (var program in item.jsontv.programme)
-                {
-                
-            }
-        }
-    </ul>
 
-</div>
-<div class="col-md-4">
-    <h2>TV3</h2>
-    @foreach (var item in Model.listTv3)
-    {
-        foreach (var program in item.jsontv.programme)
-        {
-            <p>@program.title.sv</p>
-        }
-    }
-</div>*@
-
-
+<script src="~/Scripts/JavaScriptIndex.js"></script>

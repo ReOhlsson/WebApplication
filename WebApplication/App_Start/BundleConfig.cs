@@ -10,6 +10,9 @@ namespace WebApplication
         {
             bundles.Add(new ScriptBundle("~/bundles/changeday").Include(
                         "~/Scripts/getdays.js"));
+      
+             bundles.Add(new ScriptBundle("~/bundles/getPopularPrograms").Include(
+                        "~/Scripts/JavaScriptIndex.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/getchannels").Include(
                         "~/Scripts/getchannels.js"));

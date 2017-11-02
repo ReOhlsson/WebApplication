@@ -1,8 +1,10 @@
 ﻿using RepoAndUnitOfWork.Abstract;
+using RepoAndUnitOfWork.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +13,9 @@ namespace RepoAndUnitOfWork.Concrete
     public class Repository<T> : IRepository<T>, IDisposable where T : class
     {
         protected ProgramDbContext dbContext;
-
         protected DbSet<T> dbSet;
+
+
         public Repository(ProgramDbContext pb)
         {
             dbContext = pb;
@@ -62,5 +65,11 @@ namespace RepoAndUnitOfWork.Concrete
                 }
             }
         }
+
+        public IEnumerable<T> GetByStartTimeAndTitle(Expression<Func<T, bool>> predicate)
+        {
+            return dbContext.Set<T>().Where(predicate);
+        }
+
     }
 }
