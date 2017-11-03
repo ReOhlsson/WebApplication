@@ -79,9 +79,11 @@ namespace WebApplication.Controllers
                 unitOfWork.Commit();
             }
 
-            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
+            //var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
 
-            return PartialView("PopularShows", indexHome);
+
+            return PartialView("PwPopup", p);
+            //return PartialView("PopularShows");
         }
 
         public ActionResult LoadPopularPrograms()
