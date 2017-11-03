@@ -62,7 +62,7 @@ namespace WebApplication.Controllers
 
             if (!test.Any())
             {
-                p.Title = title;
+                p.Title = title; 
                 p.Start_time = start;
                 p.End_time = stop;
                 p.Channel = channel;
