@@ -66,7 +66,7 @@ namespace RepoAndUnitOfWork.Concrete
             }
         }
 
-        public IEnumerable<T> GetByStartTimeAndTitle(Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return dbContext.Set<T>().Where(predicate);
         }

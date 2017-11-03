@@ -25,9 +25,7 @@ namespace RepoAndUnitOfWork.Abstract
         void Delete(T entity);
 
         //Method to get list of programs by starttime and title
-        IEnumerable<T> GetByStartTimeAndTitle(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 
-        //Method to get list of most popular programs
-        IEnumerable<T> GetMostPopular(Expression<Func<T, bool>> predicate);
     }
 }

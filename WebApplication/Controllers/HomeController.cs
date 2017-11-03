@@ -25,21 +25,6 @@ namespace WebApplication.Controllers
             //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
             return View();
         }
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
-
         //public ActionResult Program(string title, string starttime)
         //{
         //    IndexHomeVM ivm = new IndexHomeVM();
@@ -58,7 +43,7 @@ namespace WebApplication.Controllers
         public ActionResult ShowsPop(string title, string start, string stop, string channel)
         {
             Program p = new Program();
-            var test = unitOfWork.ProgramRepository.GetByStartTimeAndTitle(x => x.Title == title && x.Start_time == start);
+            var test = unitOfWork.ProgramRepository.Find(x => x.Title == title && x.Start_time == start);
 
             if (!test.Any())
             {
@@ -79,31 +64,19 @@ namespace WebApplication.Controllers
                 unitOfWork.Commit();
             }
 
-            //var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
-
-
-            return PartialView("PwPopup", p);
-            //return PartialView("PopularShows");
+            return RedirectToAction("Index", p);
         }
 
         public ActionResult LoadPopularPrograms()
         {
-            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(5);
+            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(5);
 
             return PartialView("PopularShows", indexHome);
         }
-
-        //public ActionResult PopularShows(string channel, string date, string title)
-        //{
-        //    //När man klickar på länk skickas man hit
-        //    //Hämtar data från json och sätter objekt
-        //    //Skickar objekt till databasen
-
-
-        //    //Hämta 5 mest klickade (index?)
-        //    var indexHome;
-
-        //    return PartialView("PopularShows", indexHome);
+        public ActionResult PwPopup(Program p)
+        {
+            return PartialView("PwPopup", p);
+        }
     }
     
 }

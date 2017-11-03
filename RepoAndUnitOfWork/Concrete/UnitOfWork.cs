@@ -13,25 +13,17 @@ namespace RepoAndUnitOfWork.Concrete
         //Our database context
         private ProgramDbContext dbContext = new ProgramDbContext();
 
-        //Private members corresponding to each concrete repository
-        private Repository<Program> programRepository;
-
-        public IRepository<Program> ProgramRepository
+        //Public members corresponding to each concrete repository
+        public IProgramRepository ProgramRepository { get; private set; }
+        public UnitOfWork()
         {
-            get
-            {
-                if(programRepository == null)
-                {
-                    programRepository = new Repository<Program>(dbContext);
-                }
-                return programRepository;
-            }
+            ProgramRepository = new ProgramRepository(dbContext);
         }
-
         //method to save all changes to repositories 
         public void Commit()
         {
             dbContext.SaveChanges();
+            
         }
         private bool disposed = false;
 
