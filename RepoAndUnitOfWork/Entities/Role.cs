@@ -17,7 +17,7 @@ namespace RepoAndUnitOfWork.Entities
         }
 
         public int Id { get; set; }
-        public string Role1 { get; set; }
+        public string Roles { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Person> Person { get; set; }

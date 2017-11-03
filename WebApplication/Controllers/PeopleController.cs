@@ -18,8 +18,8 @@ namespace WebApplication.Controllers
         // GET: People
         public ActionResult Index()
         {
-            var model = db.Person.ToList();
-            return View(model);
+            var model = db.Person.Include(p => p.Role);
+            return View(model.ToList());
         }
 
         // GET: People/Details/5
