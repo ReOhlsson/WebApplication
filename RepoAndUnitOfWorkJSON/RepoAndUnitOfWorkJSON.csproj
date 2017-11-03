@@ -57,7 +57,7 @@
     <Compile Include="Entites\JsonProgram.cs" />
     <Compile Include="Entites\JsonTv.cs" />
     <Compile Include="Entites\ListOfChannel.cs" />
-    <Compile Include="Entites\Person.cs" />
+    <Compile Include="Entites\CreditPerson.cs" />
     <Compile Include="Entites\Programme.cs" />
     <Compile Include="Entites\Title.cs" />
     <Compile Include="Entites\Video.cs" />

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RepoAndUnitOfWorkJSON.Entites
 {
-    public class Person
+    public class CreditPerson
     {
         public string name { get; set; }
     }

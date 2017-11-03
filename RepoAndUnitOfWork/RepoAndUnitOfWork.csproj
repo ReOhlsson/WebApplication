@@ -54,10 +54,17 @@
     <Compile Include="Concrete\ProgramRepository.cs" />
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Program.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RepoAndUnitOfWorkJSON\RepoAndUnitOfWorkJSON.csproj">
+      <Project>{1E823627-0411-49C0-847B-0E19F7C44ECA}</Project>
+      <Name>RepoAndUnitOfWorkJSON</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Compile Include="Concrete\ProgramDbContext.cs" />

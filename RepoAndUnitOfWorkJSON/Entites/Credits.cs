@@ -7,8 +7,8 @@ namespace RepoAndUnitOfWorkJSON.Entites
 {
     public class Credits
     {
-        public List<Person> writer { get; set; }
-        public List<Person> director { get; set; }
-        public List<Person> actor { get; set; }
+        public List<CreditPerson> writer { get; set; }
+        public List<CreditPerson> director { get; set; }
+        public List<CreditPerson> actor { get; set; }
     }
 }
