@@ -1,20 +1,18 @@
-﻿@model RepoAndUnitOfWork.Entities.Program
+﻿@model  RepoAndUnitOfWorkJSON.Entites.Programme
 
 <div id="popupMovie" class="overlay">
     <div class="popup">
-        <h3>@Model.Title</h3>
-
+        <h3>@Model.title.sv</h3>
         <a class="close" href="">&times;</a>
         <div class="content">
             <hr class="footerhr" />
-            Starttid: @Model.Start_time - @Model.End_time<br><br>
+            Visas: @Model.start - @Model.stop<br><br>
 
-            @*@Model.desc<br><br>*@
-
-            @*@foreach (var item in Model.category.en)
+            @Model.desc.sv<br><br>
+            @foreach (var category in Model.category.en)
             {
-                <i>item</i>
-            }*@
+                <i>@category</i>
+            }
 
         </div>
     </div>

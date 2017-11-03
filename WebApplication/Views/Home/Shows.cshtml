@@ -5,9 +5,14 @@
         {
             @*<p>@item.title.sv</p>*@
 
-            <li><a onclick="location.href='@Url.Action("ShowsPop", "Home", new { title = @item.title.sv, start= @item.start, stop = @item.stop, channel = @item.channel}, null)'", value = @item.title.sv/@item.start/@item.stop/@item.channel> @item.start   @item.title.sv</a></li>
+            <li><a class="programLink" id="@item.title.sv">@item.start   @item.title.sv</a></li>
+
+            <li>@Ajax.ActionLink((string)@item.title.sv, "ShowsPop", "Home", new { program = @item}, null, new { UpdateTargetId = "programPopup" })</li>
+
         }
+
    </ul>
 </div>
 
 <script src="~/Scripts/JavaScriptIndex.js"></script>
+

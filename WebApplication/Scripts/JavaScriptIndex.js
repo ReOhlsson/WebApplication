@@ -7,3 +7,5 @@
         $('.popularShows').load("/Home/ShowsPop", { array: res });
     });
 });
+
+

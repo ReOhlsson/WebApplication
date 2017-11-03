@@ -40,31 +40,42 @@ namespace WebApplication.Controllers
             return PartialView("Shows", indexHome);
         }
 
-        public ActionResult ShowsPop(string title, string start, string stop, string channel)
+        public ActionResult ShowsPop(Programme program)
         {
             Program p = new Program();
-            var test = unitOfWork.ProgramRepository.Find(x => x.Title == title && x.Start_time == start);
+            p.Title = program.title.sv;
+            p.Start_time = program.start;
+            p.End_time = program.stop;
+            p.Channel = program.channel;
+            p.Click = 1;
 
-            if (!test.Any())
-            {
-                p.Title = title; 
-                p.Start_time = start;
-                p.End_time = stop;
-                p.Channel = channel;
-                p.Click = 1;
 
-                unitOfWork.ProgramRepository.Create(p);
-                unitOfWork.Commit();
-            }
-            else
-            {
-                p = (Program)test.FirstOrDefault();
-                p.Click += 1;
-                unitOfWork.ProgramRepository.Update(p);
-                unitOfWork.Commit();
-            }
+            //var test = unitOfWork.ProgramRepository.Find(x => x.Title == title && x.Start_time == start);
 
-            return RedirectToAction("Index", p);
+            //if (!test.Any())
+            //{
+
+            //    unitOfWork.ProgramRepository.Create(p);
+            //    unitOfWork.Commit();
+            //}
+            //else
+            //{
+            //    p = (Program)test.FirstOrDefault();
+            //    p.Click += 1;
+            //    unitOfWork.ProgramRepository.Update(p);
+            //    unitOfWork.Commit();
+            //}
+
+            Programme pj = new Programme();
+            
+            //pj.start = start;
+            //pj.title.sv = title;
+            //pj.stop = stop;
+            //pj.channel = channel;
+            //pj.desc.sv = description;
+            //pj.category.en = categoryList;
+
+            return PartialView("PwPopup", pj);
         }
 
         public ActionResult LoadPopularPrograms()
@@ -72,10 +83,6 @@ namespace WebApplication.Controllers
             var indexHome = unitOfWork.ProgramRepository.GetMostPopular(5);
 
             return PartialView("PopularShows", indexHome);
-        }
-        public ActionResult PwPopup(Program p)
-        {
-            return PartialView("PwPopup", p);
         }
     }
     
