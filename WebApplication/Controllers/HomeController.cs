@@ -61,6 +61,13 @@ namespace WebApplication.Controllers
 
             return PartialView("PopularShows", indexHome);
         }
+
+        [Authorize]
+        public ActionResult MyPage()
+        {
+            //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
+            return View();
+        }
     }
     
 }

@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Abstract\IProgramRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IPersonRepository.cs" />
+    <Compile Include="Concrete\PersonRepository.cs" />
     <Compile Include="Concrete\ProgramRepository.cs" />
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />
