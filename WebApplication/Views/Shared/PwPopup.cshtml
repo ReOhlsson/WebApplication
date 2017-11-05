@@ -6,7 +6,7 @@
         <a class="close" onclick="closePopUp" href="">&times;</a>
         <div class="content">
             <hr class="footerhr" />
-            Visas: @Model.ProgramJson.start - @Model.ProgramJson.stop<br><br>
+            Visas: @Model.ProgramJson.StartTime.ToShortTimeString() - @Model.ProgramJson.StopTime.ToShortTimeString()<br><br>
 
             @Model.ProgramJson.desc.sv<br><br>
             @*@foreach (var category in Model.category.en)

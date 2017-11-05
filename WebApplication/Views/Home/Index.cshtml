@@ -1,8 +1,10 @@
 ﻿@model WebApplication.Models.ViewModels.IndexHomeVM
-
-<div class="popularShows">
-    @Html.Action("LoadPopularPrograms")
+<div class="row">
+    <div class="col-lg-12 popularShows">
+        @Html.Action("LoadPopularPrograms")
+    </div>
 </div>
+
 
 <div class="row">
 
@@ -18,13 +20,10 @@
             </ul>
         </nav>
     </div>
-    <div class="partialViewHolder">
-            @Html.Partial("ContainerForChannel")
+    <div class="row">
+        <div class="containerChannel">
         </div>
+    </div>
         <div id="programPopup">
-
-            
-
-
         </div>
 </div>

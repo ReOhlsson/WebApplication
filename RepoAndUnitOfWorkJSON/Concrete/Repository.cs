@@ -31,8 +31,8 @@ namespace RepoAndUnitOfWorkJSON.Concrete
             programList = jp.jsontv.programme.ToList();
 
             ProgramList = programList.AsQueryable();
-
             return programList;
         }
+
     }
 }

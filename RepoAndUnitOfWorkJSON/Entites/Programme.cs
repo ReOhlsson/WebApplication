@@ -19,5 +19,7 @@ namespace RepoAndUnitOfWorkJSON.Entites
         public List<string> url { get; set; } = new List<string>();
         public string date { get; set; }
         public Video video { get; set; } = new Video();
+        public DateTime StartTime { get; set; }
+        public DateTime StopTime { get; set; }
     }
 }
