@@ -7,6 +7,6 @@ namespace RepoAndUnitOfWorkJSON.Entites
 {
     public class JsonProgram
     {
-        public JsonTv jsontv { get; set; }
+        public JsonTv jsontv { get; set; } = new JsonTv();
     }
 }

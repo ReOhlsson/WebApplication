@@ -7,17 +7,17 @@ namespace RepoAndUnitOfWorkJSON.Entites
 {
     public class Programme
     {
-        public Category category { get; set; }
+        public Category category { get; set; } = new Category();
         public string channel { get; set; }
-        public EpisodeNumber episodeNum { get; set; }
-        public Title title { get; set; }
+        public EpisodeNumber episodeNum { get; set; } = new EpisodeNumber();
+        public Title title { get; set; } = new Title();
         public string start { get; set; }
         public string stop { get; set; }
-        public Credits credits { get; set; }
-        public Description desc { get; set; }
-        public List<string> country { get; set; }
-        public List<string> url { get; set; }
+        public Credits credits { get; set; } = new Credits();
+        public Description desc { get; set; } = new Description();
+        public List<string> country { get; set; } = new List<string>();
+        public List<string> url { get; set; } = new List<string>();
         public string date { get; set; }
-        public Video video { get; set; }
+        public Video video { get; set; } = new Video();
     }
 }

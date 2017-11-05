@@ -43,5 +43,21 @@ namespace RepoAndUnitOfWork.Concrete
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        public void gdfgdfsgdf(Program p)
+        {
+            var test = ProgramRepository.Find(x => x.Title == p.Title && x.Start_time == p.Start_time);
+            if (!test.Any())
+            {
+                ProgramRepository.Create(p);
+                Commit();
+            }
+            else
+            {
+                p = (Program)test.FirstOrDefault();
+                p.Click += 1;
+                ProgramRepository.Update(p);
+                Commit();
+            }
+        }
     }
 }

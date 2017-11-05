@@ -8,7 +8,7 @@ namespace RepoAndUnitOfWorkJSON.Entites
 {
     public class ListOfChannel
     {
-        private List<Channel> listOfChannels { get; set; }
+        private List<Channel> listOfChannels { get; set; } = new List<Channel>();
 
         public List<Channel> GetListOfChannels()
         {

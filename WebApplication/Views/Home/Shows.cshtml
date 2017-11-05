@@ -5,10 +5,7 @@
         {
             @*<p>@item.title.sv</p>*@
 
-            <li><a class="programLink" id="@item.title.sv">@item.start   @item.title.sv</a></li>
-
-            <li>@Ajax.ActionLink((string)@item.title.sv, "ShowsPop", "Home", new { program = @item}, null, new { UpdateTargetId = "programPopup" })</li>
-
+            <li><a class="programLink" onclick="showPopUp(this)" id="@item.title.sv" data-title="@item.title.sv" data-start="@item.start" data-stop="@item.stop" data-desc="@item.desc.sv" data-channel="@item.channel">@item.start   @item.title.sv</a></li>
         }
 
    </ul>

@@ -3,16 +3,16 @@
 <div id="popupMovie" class="overlay">
     <div class="popup">
         <h3>@Model.title.sv</h3>
-        <a class="close" href="">&times;</a>
+        <a class="close" onclick="closePopUp" href="">&times;</a>
         <div class="content">
             <hr class="footerhr" />
             Visas: @Model.start - @Model.stop<br><br>
 
             @Model.desc.sv<br><br>
-            @foreach (var category in Model.category.en)
+            @*@foreach (var category in Model.category.en)
             {
                 <i>@category</i>
-            }
+            }*@
 
         </div>
     </div>

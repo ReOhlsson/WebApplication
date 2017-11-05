@@ -36,25 +36,33 @@ namespace WebApplication.Controllers
         public ActionResult Shows(string channel, string date = "2017-11-01")
         {
             var indexHome = jsUnitOfWork.ProgramRepository.ListOfJsonProgram(date, channel);
+            string defaultText = "Ingen text finns";
+            foreach (var p in indexHome)
+            {
+                if (p.desc.sv == "")
+                {
+                    p.desc.sv += defaultText;
+                }
+            }
 
             return PartialView("Shows", indexHome);
         }
 
-        public ActionResult ShowsPop(Programme program)
+        public ActionResult ShowsPop(string title, string start, string stop,  string desc, string channel)
         {
             Program p = new Program();
-            p.Title = program.title.sv;
-            p.Start_time = program.start;
-            p.End_time = program.stop;
-            p.Channel = program.channel;
+            p.Title = title;
+            p.Start_time = start;
+            p.End_time = stop;
+            p.Channel = channel;
             p.Click = 1;
 
+            unitOfWork.gdfgdfsgdf(p);
 
             //var test = unitOfWork.ProgramRepository.Find(x => x.Title == title && x.Start_time == start);
 
             //if (!test.Any())
             //{
-
             //    unitOfWork.ProgramRepository.Create(p);
             //    unitOfWork.Commit();
             //}
@@ -67,13 +75,12 @@ namespace WebApplication.Controllers
             //}
 
             Programme pj = new Programme();
-            
-            //pj.start = start;
-            //pj.title.sv = title;
-            //pj.stop = stop;
-            //pj.channel = channel;
-            //pj.desc.sv = description;
-            //pj.category.en = categoryList;
+
+            pj.start = start;
+            pj.title.sv = title;
+            pj.stop = stop;
+            pj.channel = channel;
+            pj.desc.sv = desc;
 
             return PartialView("PwPopup", pj);
         }
