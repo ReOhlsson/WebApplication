@@ -12,6 +12,7 @@ using RepoAndUnitOfWork.Entities;
 using RepoAndUnitOfWorkJSON.Concrete;
 using RepoAndUnitOfWorkJSON.Entites;
 using RepoAndUnitOfWork.Concrete;
+using WebApplication.Models.Models;
 
 namespace WebApplication.Controllers
 {
@@ -25,27 +26,11 @@ namespace WebApplication.Controllers
             //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
             return View();
         }
-        //public ActionResult Program(string title, string starttime)
-        //{
-        //    IndexHomeVM ivm = new IndexHomeVM();
-        //    var model = ivm.GetProgramDetails(title, starttime);
-
-        //    return PartialView("PwPopup", model);
-        //}
 
         public ActionResult Shows(string channel, string date = "2017-11-01")
         {
-            var indexHome = jsUnitOfWork.ProgramRepository.ListOfJsonProgram(date, channel);
-            string defaultText = "Ingen text finns";
-            foreach (var p in indexHome)
-            {
-                if (p.desc.sv == "")
-                {
-                    p.desc.sv += defaultText;
-                }
-            }
-
-            return PartialView("Shows", indexHome);
+            IndexHomeVM model = new IndexHomeVM(jsUnitOfWork, date, channel);
+            return PartialView("Shows", model);
         }
 
         public ActionResult ShowsPop(string title, string start, string stop,  string desc, string channel)
@@ -57,23 +42,6 @@ namespace WebApplication.Controllers
             p.Channel = channel;
             p.Click = 1;
 
-            unitOfWork.gdfgdfsgdf(p);
-
-            //var test = unitOfWork.ProgramRepository.Find(x => x.Title == title && x.Start_time == start);
-
-            //if (!test.Any())
-            //{
-            //    unitOfWork.ProgramRepository.Create(p);
-            //    unitOfWork.Commit();
-            //}
-            //else
-            //{
-            //    p = (Program)test.FirstOrDefault();
-            //    p.Click += 1;
-            //    unitOfWork.ProgramRepository.Update(p);
-            //    unitOfWork.Commit();
-            //}
-
             Programme pj = new Programme();
 
             pj.start = start;
@@ -82,7 +50,9 @@ namespace WebApplication.Controllers
             pj.channel = channel;
             pj.desc.sv = desc;
 
-            return PartialView("PwPopup", pj);
+            JsonProgramModel model = new JsonProgramModel(unitOfWork, p, pj);
+
+            return PartialView("PwPopup", model);
         }
 
         public ActionResult LoadPopularPrograms()

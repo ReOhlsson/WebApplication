@@ -43,7 +43,7 @@ namespace RepoAndUnitOfWork.Concrete
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        public void gdfgdfsgdf(Program p)
+        public void InsertOrUpdateClicks(Program p)
         {
             var test = ProgramRepository.Find(x => x.Title == p.Title && x.Start_time == p.Start_time);
             if (!test.Any())
