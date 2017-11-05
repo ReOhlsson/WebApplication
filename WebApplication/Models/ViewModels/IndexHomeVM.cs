@@ -17,16 +17,6 @@ namespace WebApplication.Models.ViewModels
         public IndexHomeVM(UnitOfWorkJson unit, string date, string channel)
         {
             ProgramJsonList = unit.ProgramRepository.ListOfJsonProgram(date, channel);
-
-
-            string defaultText = "Ingen text finns";
-            foreach (var p in ProgramJsonList)
-            {
-                if (p.desc.sv == "")
-                {
-                    p.desc.sv += defaultText;
-                }
-            }
         }
     }
 }
