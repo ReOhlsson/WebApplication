@@ -17,6 +17,17 @@ namespace WebApplication.Models.Models
         {
             unit.InsertOrUpdateClicks(pr);
             this.ProgramJson = jsPr;
+            setTime();
+        }
+        private void setTime()
+        {
+            DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
+            dateTime = dateTime.AddSeconds(Convert.ToInt32(ProgramJson.start));
+            ProgramJson.StartTime = dateTime;
+
+            DateTime dateTimeStop = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
+            dateTimeStop = dateTimeStop.AddSeconds(Convert.ToInt32(ProgramJson.stop));
+            ProgramJson.StopTime = dateTimeStop;
         }
     }
 }

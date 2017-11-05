@@ -218,7 +218,6 @@
     <Content Include="Views\Shared\PwPopup.cshtml" />
     <Content Include="Views\Home\Shows.cshtml" />
     <Content Include="Views\Shared\PopularShows.cshtml" />
-    <Content Include="Views\Shared\ContainerForChannel.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />
