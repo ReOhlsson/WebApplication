@@ -26,10 +26,10 @@
                     { 
                         <li>@Html.ActionLink("Logga ut","SignOut","Account")</li>
                         
-                        if (User.IsInRole("Admin"))
+                        @*if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Administrera", "Index", "People")</li>
-                        }
+                        }*@
                     }
 
                 </ul>

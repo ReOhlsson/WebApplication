@@ -5,3 +5,10 @@
 
 <h2>MyPage</h2>
 
+<h1>Välkommen @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Admin")</h1>
+@if (User.IsInRole("Admin"))
+{
+    <h1>Admin</h1>
+}else if(User.IsInRole("Medlem")){
+    <h1>Medlem</h1>
+}

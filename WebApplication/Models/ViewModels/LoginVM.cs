@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RepoAndUnitOfWork.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace WebApplication.Models.ViewModels
         //Ser till att inmatningsfältet blir av typen Passsword
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string Role { get; set; }
+        public Role Role { get; set; } = new Role();
 
     }
 }
