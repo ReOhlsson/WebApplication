@@ -9,11 +9,15 @@
             Visas: @Model.ProgramJson.StartTime.ToShortTimeString() - @Model.ProgramJson.StopTime.ToShortTimeString()<br><br>
 
             @Model.ProgramJson.desc.sv<br><br>
-            @*@foreach (var category in Model.category.en)
+            @foreach (var category in Model.ProgramJson.category.en)
             {
-                <i>@category</i>
-            }*@
+                <i>@category </i>
+            }
 
+            @if (User.Identity.IsAuthenticated)
+            {
+            <button type="button" class="btn btn-primary">Lägg till i titt-listan</button>
+            }
         </div>
     </div>
 </div>

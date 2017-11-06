@@ -3,8 +3,6 @@
     <ul class="program">
         @foreach (var item in Model.ProgramJsonList)
         {
-            @*<p>@item.title.sv</p>*@
-
             <li><a class="programLink" onclick="showPopUp(this)" id="@item.title.sv" data-title="@item.title.sv" data-start="@item.start" data-stop="@item.stop" data-desc="@item.desc.sv" data-channel="@item.channel">@item.StartTime.ToShortTimeString()  @item.title.sv</a></li>
         }
 
