@@ -23,8 +23,10 @@ namespace WebApplication.Controllers
         public ActionResult Login(LoginVM model, string ReturnUrl)
         {
             if(ModelState.IsValid)
-            { 
-                if(unitOfWork.PersonRepository.GetUserCredentials(model.Username, model.Password) != null)
+            {
+                var person = unitOfWork.PersonRepository.GetUserCredentials(model.Username, model.Password);
+
+                if (unitOfWork.PersonRepository.GetUserCredentials(model.Username, model.Password) != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     return Redirect(ReturnUrl);

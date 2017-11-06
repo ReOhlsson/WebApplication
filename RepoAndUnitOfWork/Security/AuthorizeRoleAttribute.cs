@@ -14,11 +14,13 @@ namespace RepoAndUnitOfWork.Security
         private readonly string[] userRole;
         private UnitOfWork unitOfWork = new UnitOfWork();
 
+        //Constructor sets userrole to array of roles from controller
         public AuthorizeRoleAttribute(params string[] roles)
         {
             this.userRole = roles;
         }
 
+        //Method checks whether an user is authorized or not
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             bool authorized = false;

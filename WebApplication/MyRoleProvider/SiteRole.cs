@@ -60,6 +60,7 @@ namespace WebApplication.MyRoleProvider
             throw new NotImplementedException();
         }
 
+        //Checks if an user is authorized or not
         public override bool IsUserInRole(string username, string roleName)
         {
             ProgramDbContext dbContect = new ProgramDbContext();
