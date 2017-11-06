@@ -10,6 +10,6 @@ namespace RepoAndUnitOfWork.Abstract
     public interface IPersonRepository : IRepository<Person>
     {
         Person GetUserCredentials(string username, string password);
-        bool IsUserRole(string username, string roleName);
+        bool IsInRole(string username, string roleName);
     }
 }

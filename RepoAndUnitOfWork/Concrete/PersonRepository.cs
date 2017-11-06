@@ -21,7 +21,7 @@ namespace RepoAndUnitOfWork.Concrete
             return dbContext.Person.Where(x => x.Username == username && x.Password == password).FirstOrDefault();
         }
 
-        public bool IsUserRole(string username, string roleName)
+        public bool IsInRole(string username, string roleName)
         {
             var role = dbContext.Person.Where(x => x.Username == username).Include(x => x.Role).Where(x => x.Role.Roles == roleName);
 

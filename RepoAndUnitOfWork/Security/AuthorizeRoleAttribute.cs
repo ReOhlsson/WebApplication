@@ -25,7 +25,7 @@ namespace RepoAndUnitOfWork.Security
 
             foreach (var role in userRole)
             {
-                authorized = unitOfWork.PersonRepository.IsUserRole(httpContext.User.Identity.Name, role);
+                authorized = unitOfWork.PersonRepository.IsInRole(httpContext.User.Identity.Name, role);
                 if (authorized) return authorized;
             }
 
