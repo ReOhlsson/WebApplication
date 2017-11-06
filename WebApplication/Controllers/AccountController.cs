@@ -24,7 +24,7 @@ namespace WebApplication.Controllers
         {
             if(ModelState.IsValid)
             { 
-                if(unitOfWork.PersonRepository.GetUserCredentials(model.Username, model.Password).Any())
+                if(unitOfWork.PersonRepository.GetUserCredentials(model.Username, model.Password) != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     return Redirect(ReturnUrl);

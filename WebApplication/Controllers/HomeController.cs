@@ -67,6 +67,7 @@ namespace WebApplication.Controllers
             //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
             return View();
         }
+
     }
     
 }

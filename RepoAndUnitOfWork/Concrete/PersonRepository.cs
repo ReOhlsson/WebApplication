@@ -16,9 +16,9 @@ namespace RepoAndUnitOfWork.Concrete
 
         }
 
-        public IEnumerable<Person> GetUserCredentials(string username, string password)
+        public Person GetUserCredentials(string username, string password)
         {
-            return dbContext.Person.Where(x => x.Username == username && x.Password == password);
+            return dbContext.Person.Where(x => x.Username == username && x.Password == password).FirstOrDefault();
         }
 
         public bool IsUserRole(string username, string roleName)

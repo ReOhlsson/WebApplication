@@ -25,7 +25,7 @@
                     @if(User.Identity.IsAuthenticated)
                     { 
                         <li>@Html.ActionLink("Logga ut","SignOut","Account")</li>
-
+                        
                         if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Administrera", "Index", "People")</li>

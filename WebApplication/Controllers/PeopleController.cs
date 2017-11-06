@@ -17,8 +17,9 @@ namespace WebApplication.Controllers
     {
         private ProgramDbContext db = new ProgramDbContext();
 
-        [AuthorizeRole("Admin")]
+
         // GET: People
+        [AuthorizeRole("Admin")]
         public ActionResult Index()
         {
             var model = db.Person.Include(p => p.Role);
