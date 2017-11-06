@@ -16,7 +16,6 @@ namespace RepoAndUnitOfWork.Entities
         public string End_time { get; set; }
         public string Channel { get; set; }
         public int Click { get; set; }
-        public bool Most_clicked { get; set; }
         public bool Editor_recommendation { get; set; }
         public string Picture { get; set; }
     }

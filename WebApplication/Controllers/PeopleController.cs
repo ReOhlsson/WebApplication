@@ -8,13 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using RepoAndUnitOfWork.Concrete;
 using RepoAndUnitOfWork.Entities;
+using RepoAndUnitOfWork.Security;
 
 namespace WebApplication.Controllers
 {
+    
     public class PeopleController : Controller
     {
         private ProgramDbContext db = new ProgramDbContext();
 
+        [AuthorizeRole("Admin")]
         // GET: People
         public ActionResult Index()
         {
