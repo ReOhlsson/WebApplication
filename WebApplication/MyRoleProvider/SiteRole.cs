@@ -62,7 +62,17 @@ namespace WebApplication.MyRoleProvider
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new NotImplementedException();
+            ProgramDbContext dbContect = new ProgramDbContext();
+            var data = dbContect.Person.Where(x => x.Username == username && x.Role.Roles == roleName).FirstOrDefault();
+
+            if (data != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
