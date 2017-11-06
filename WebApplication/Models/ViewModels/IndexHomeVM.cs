@@ -7,12 +7,14 @@ using System.Data.Entity;
 using RepoAndUnitOfWorkJSON.Entites;
 using RepoAndUnitOfWork.Concrete;
 using RepoAndUnitOfWorkJSON.Concrete;
+using System.Globalization;
 
 namespace WebApplication.Models.ViewModels
 {
     public class IndexHomeVM
     {
         public List<Programme> ProgramJsonList { get; set; } = new List<Programme>();
+        public List<Days> ListOfDays { get; set; } = new List<Days>();
         public string ChannelName { get; set; }
 
         public IndexHomeVM(UnitOfWorkJson unit, string date, string channel)
@@ -20,6 +22,7 @@ namespace WebApplication.Models.ViewModels
             ProgramJsonList = unit.ProgramRepository.ListOfJsonProgram(date, channel);
             GetChannelName(channel);
             setStartTime();
+            SetListOfDays();
         }
         private void GetChannelName(string channel)
         {
@@ -48,6 +51,20 @@ namespace WebApplication.Models.ViewModels
                 p.StartTime = dateTime;
             }
             
+        }
+        private void SetListOfDays()
+        {
+            DateTime date = DateTime.Now;
+            for (int i = -3; i < 3; i++)
+            {
+                Days d = new Days();
+                d.Date = DateTime.Now;
+                d.Date = d.Date.AddDays(i);
+                d.Day = DateTimeFormatInfo.CurrentInfo.GetDayName(d.Date.DayOfWeek);
+                d.Day = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(d.Day.ToLower());
+
+                ListOfDays.Add(d);
+            }
         }
     }
 }

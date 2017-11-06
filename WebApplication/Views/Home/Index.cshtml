@@ -12,11 +12,10 @@
         <nav id="navday">
             <a href="#" id="menu-days-icon"></a>
             <ul class="menudays">
-                @*@foreach (var item in Model)
+                @*@foreach (var item in Model.ListOfDays)
                     {
-                        <li><a class="showDayShow" @*value ="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()></a></li>
+                        <li><a class="showDayShow" value ="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()></a></li>
                     }*@
-
             </ul>
         </nav>
     </div>
