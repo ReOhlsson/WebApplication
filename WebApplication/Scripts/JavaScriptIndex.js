@@ -59,7 +59,7 @@ $(window).on('load', function () {
     var date = Math.round((new Date()).getTime() / 1000);
     debugger
     $(".program li a").each(function (key, value) {
-        var unix = value.getAttribute("data-start");
+        var unix = value.getAttribute("data-stop");
         var a = parseInt(unix)
 
         if (date >= a) {
