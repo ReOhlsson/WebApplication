@@ -22,5 +22,6 @@ namespace RepoAndUnitOfWorkJSON.Entites
         public DateTime StartTime { get; set; }
         public DateTime StopTime { get; set; }
         public string iconUrl { get; set; }
+        public string CategoryToString { get; set; }
     }
 }
