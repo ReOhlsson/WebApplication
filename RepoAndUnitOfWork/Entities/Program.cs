@@ -12,8 +12,8 @@ namespace RepoAndUnitOfWork.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Start_time { get; set; }
-        public string End_time { get; set; }
+        public long Start_time { get; set; }
+        public long End_time { get; set; }
         public string Channel { get; set; }
         public int Click { get; set; }
         public bool Editor_recommendation { get; set; }

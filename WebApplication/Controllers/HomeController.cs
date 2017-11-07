@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
             return PartialView("Shows", model);
         }
 
-        public ActionResult ShowsPop(string title, string start, string stop,  string desc, string channel, string category)
+        public ActionResult ShowsPop(string title, long start, long stop,  string desc, string channel, string category)
         {
             Program p = new Program();
             p.Title = title;
@@ -50,9 +50,9 @@ namespace WebApplication.Controllers
 
             Programme pj = new Programme();
 
-            pj.start = start;
+            pj.start = start.ToString();
             pj.title.sv = title;
-            pj.stop = stop;
+            pj.stop = stop.ToString();
             pj.channel = channel;
             pj.desc.sv = desc;
             pj.category.en = c.ToList();
@@ -65,6 +65,7 @@ namespace WebApplication.Controllers
         public ActionResult LoadPopularPrograms()
         {
             var indexHome = unitOfWork.ProgramRepository.GetMostPopular(5);
+
 
             return PartialView("PopularShows", indexHome);
         }

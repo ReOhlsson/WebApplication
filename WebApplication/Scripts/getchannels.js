@@ -10,9 +10,9 @@
         $('.containerChannel').append($d);
     });
 
-    var channelName = ["kanal5", "tv6", "tv8"];
+    var channelName1 = ["kanal5", "tv6", "tv8"];
 
-    $.each(channelName, function (index, value) {
+    $.each(channelName1, function (index, value) {
 
         index += number;
         var $d = $("<div class='col-md-4 number" + index + "'>").load('Home/Shows', { channel: value, date: resultDate });
@@ -23,9 +23,9 @@
 function changeShowSchedual(days) {
     debugger
     var date = days.getAttribute("data-dateTime");
-    var channelName = ["svt1.svt", "tv3", "tv4","kanal5", "tv6", "tv8"];
+    var channelNames = ["svt1.svt", "tv3", "tv4","kanal5", "tv6", "tv8"];
 
-    $.each(channelName, function (index, value) {
+    $.each(channelNames, function (index, value) {
         $.ajax({
             type: "GET",
             url: "Home/Shows",

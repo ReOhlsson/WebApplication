@@ -1,10 +1,14 @@
-﻿<div class="col-md-4">
-<h2>Hett just nu:</h2>
-<ul class="program">
-    @foreach (var item in Model)
-    { 
-        <li><a onclick="location.href='@Url.Action("ShowsPop", "Home", new { title = @item.Title, start= @item.Start_time, stop = @item.End_time, desc = @item.Description, channel = @item.Channel, category = @item.Categories}, null)'" , value=@item.Title/@item.Start_time/@item.End_time/@item.Channel> @item.Channel @item.Title    @item.Start_time</a></li>
-    }
-</ul>
-</div>
+﻿
+    <h2>Hett just nu:</h2>
+    <div class="owl-carousel">    
+        @*<ul class="program">*@
+            @foreach (var item in Model)
+            {
+                <div class="popularShows" style="background-image: url(@item.Picture)">
+                    <a onclick="location.href='@Url.Action("ShowsPop", "Home", new { title = @item.Title, start= @item.Start_time, stop = @item.End_time, desc = @item.Description, channel = @item.Channel, category = @item.Categories}, null)'" , value=@item.Title/@item.Start_time/@item.End_time/@item.Channel>@item.Channel @item.Title    @item.Start_time</a>
+                </div>
+            }
+        @*</ul>*@
+    </div>
+
 

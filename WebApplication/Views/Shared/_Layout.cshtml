@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="Content/owl.theme.default.min.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -49,6 +51,15 @@
     @Scripts.Render("~/bundles/getPopularPrograms")
     
     @RenderSection("scripts", required: false)
+
+    <script src="/Scripts/owl.carousel.min.js"></script>
     
+    <script>
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel();
+        });
+    </script>
+
+
 </body>
 </html>
