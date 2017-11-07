@@ -88,3 +88,10 @@ ul, ol {
     color: #333;
     font-family: Tahoma, Arial, sans-serif;
 }
+.number  ul{
+    background :#fff;
+}
+.number a {
+    color:#333;
+    padding:10px;
+}
