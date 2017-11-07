@@ -8,7 +8,6 @@
 //    });
 //});
 function showPopUp(program) {
-    debugger
     var title = program.getAttribute("data-title") // "3"
     var start = program.getAttribute("data-start") // "3"
     var stop = program.getAttribute("data-stop") // "3"
@@ -31,12 +30,10 @@ function showPopUp(program) {
 }
 
 function closePopUp() {
-    debugger
     document.getElementById('popupMovie').style.display = "none";
 }
 
 $(".programLink").click(function () {
-    debugger
     var program = document.getElementsByClassName('programLink');
     var title = program.getAttribute("data-title") // "3"
     var start = program.getAttribute("data-start") // "3"
@@ -58,3 +55,15 @@ $(".programLink").click(function () {
     });
 });
 
+//$(document).ready(function () {
+//    var date = Math.round((new Date()).getTime() / 1000);
+//    debugger
+//    $(".program li a").each(function (key, value) {
+//        var unix = value.getAttribute("data-start");
+//        var a = parseInt(unix)
+
+//        if (date > a) {
+//            this.style.background = "pink";
+//        }
+//    });
+//});

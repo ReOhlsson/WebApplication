@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var resultDate = new Date().toISOString().slice(0,10); 
-    debugger
+ 
     var channelName = ["svt1.svt", "tv3", "tv4"];
     var number = 3;
 
@@ -21,7 +21,6 @@
 });
 
 function changeShowSchedual(days) {
-    debugger
     var date = days.getAttribute("data-dateTime");
     var channelNames = ["svt1.svt", "tv3", "tv4","kanal5", "tv6", "tv8"];
 
