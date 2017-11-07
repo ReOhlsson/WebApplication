@@ -16,6 +16,7 @@ namespace WebApplication.Models.ViewModels
         public List<Programme> ProgramJsonList { get; set; } = new List<Programme>();
         public List<Days> ListOfDays { get; set; } = new List<Days>();
         public string ChannelName { get; set; }
+        public string ChannelIconUrl { get; set; }
 
         public IndexHomeVM(UnitOfWorkJson unit, string date, string channel)
         {
@@ -30,12 +31,15 @@ namespace WebApplication.Models.ViewModels
             {
                 case "svt1.svt":
                     ChannelName = "SVT1";
+                    ChannelIconUrl = "http://logos.xmltv.se/svt1.svt.se.png";
                     break;
                 case "tv3":
                     ChannelName = "TV3";
+                    ChannelIconUrl = "http://logos.xmltv.se/tv3.se.png";
                     break;
                 case "tv4":
                     ChannelName = "TV4";
+                    ChannelIconUrl = "http://logos.xmltv.se/tv4.se.png";
                     break;
                 default:
                     ChannelName = "Error";

@@ -29,9 +29,11 @@ namespace RepoAndUnitOfWorkJSON.Concrete
             jp = jsData.GetJsonChannel(date, channel);
             List<Programme> programList = new List<Programme>();
             programList = jp.jsontv.programme.ToList();
-
+            
             ProgramList = programList.AsQueryable();
             return programList;
+
+
         }
 
     }

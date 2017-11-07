@@ -21,5 +21,6 @@ namespace RepoAndUnitOfWorkJSON.Entites
         public Video video { get; set; } = new Video();
         public DateTime StartTime { get; set; }
         public DateTime StopTime { get; set; }
+        public string iconUrl { get; set; }
     }
 }
