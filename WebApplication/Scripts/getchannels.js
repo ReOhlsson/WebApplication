@@ -23,7 +23,7 @@
 function changeShowSchedual(days) {
     debugger
     var date = days.getAttribute("data-dateTime");
-    var channelName = ["svt1.svt", "tv3", "tv4","kanal5", "tv6", "tv8"];
+    var channelName = ["svt1.svt", "tv3", "tv4", "kanal5", "tv6", "tv8"];
 
     $.each(channelName, function (index, value) {
         $.ajax({
