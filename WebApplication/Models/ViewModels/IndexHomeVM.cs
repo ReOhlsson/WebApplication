@@ -51,26 +51,5 @@ namespace WebApplication.Models.ViewModels
                     break;
             }
         }
-        //public void setStartTime()
-        //{
-        //    foreach (var p in ProgramJsonList)
-        //    {
-        //        DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
-        //        dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
-        //        p.StartTime = dateTime;
-        //    }
-            
-        //}
-        
-        //public void ConvertListToString()
-        //{
-        //    foreach (var item in ProgramJsonList)
-        //    {
-        //        foreach (var c in item.category.en)
-        //        {
-        //            item.CategoryToString += c + "/";
-        //        }
-        //    }
-        //}
     }
 }
