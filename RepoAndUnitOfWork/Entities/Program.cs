@@ -18,5 +18,7 @@ namespace RepoAndUnitOfWork.Entities
         public int Click { get; set; }
         public bool Editor_recommendation { get; set; }
         public string Picture { get; set; }
+        public string Description { get; set; }
+        public string Categories { get; set; }
     }
 }

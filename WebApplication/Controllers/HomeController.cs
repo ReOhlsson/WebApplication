@@ -42,6 +42,9 @@ namespace WebApplication.Controllers
             p.End_time = stop;
             p.Channel = channel;
             p.Click = 1;
+            p.Description = desc;
+            p.Categories = category;
+            p.Picture = "https://images.pexels.com/photos/239533/pexels-photo-239533.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
 
             var c = category.Split('/');
 
