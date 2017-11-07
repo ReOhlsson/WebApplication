@@ -4,7 +4,7 @@
     <div class="popup">
         <img class="channelIconPopup" src="@Model.ProgramJson.iconUrl" />
         <h3>@Model.ProgramJson.title.sv</h3>
-        <a class="close" onclick="closePopUp" href="">&times;</a>
+        <a class="close" onclick="closePopUp()">&times;</a>
         <div class="content">
             <hr class="footerhr" />
             Visas: @Model.ProgramJson.StartTime.ToShortTimeString() - @Model.ProgramJson.StopTime.ToShortTimeString()<br><br>
