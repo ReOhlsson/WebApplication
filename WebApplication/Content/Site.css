@@ -23,6 +23,41 @@ textarea {
     max-width: 280px;
 }
 
+#rowDays {
+    margin-top: 15px;
+}
+
+.owl-carousel .owl-item img {
+    height: 35px;
+    width: 35px !important;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 5px;
+}
+
+.aPopularShows {
+    margin-top: 160px;
+    position: absolute;
+    padding-left: 50px;
+}
+
+.popularShows {
+    background-size: 396px 284px;
+    height: 200px;
+    margin: 10px 1px;
+    padding: 0;
+}
+.popularHeader {
+    position: absolute;
+    background: #333333;
+    opacity: 0.8;
+    width: 100%;
+    padding: 5px 0 5px 10px;
+    margin: 10px 0 0 0;
+    z-index:2;
+    font-size: 22px;
+}
+
 ul, ol {
     margin-top: 0;
     margin-bottom: 10px;

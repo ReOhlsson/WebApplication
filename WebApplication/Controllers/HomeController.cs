@@ -85,6 +85,10 @@ namespace WebApplication.Controllers
         {
             var indexHome = unitOfWork.ProgramRepository.GetMostPopular(5);
 
+            foreach(var item in indexHome)
+            {
+                item.Channel = item.Channel.Trim();
+            }
 
             return PartialView("PopularShows", indexHome);
         }
