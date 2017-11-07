@@ -15,11 +15,12 @@ function showPopUp(program) {
     var stop = program.getAttribute("data-stop") // "3"
     var desc = program.getAttribute("data-desc") // "3"
     var channel = program.getAttribute("data-channel") // "3"
+    var category = program.getAttribute("data-category")
 
     $.ajax({
         type: "GET",
         url: "/home/showspop",
-        data: { title: title, start: start, stop: stop, desc: desc, channel: channel },
+        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category :category },
         async: false,
         success: function (data) {
             document.getElementById("programPopup").innerHTML = data;

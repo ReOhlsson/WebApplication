@@ -14,6 +14,7 @@ using RepoAndUnitOfWorkJSON.Entites;
 using RepoAndUnitOfWork.Concrete;
 using WebApplication.Models.Models;
 using RepoAndUnitOfWork.Security;
+using System.Globalization;
 
 namespace WebApplication.Controllers
 {
@@ -33,7 +34,7 @@ namespace WebApplication.Controllers
             return PartialView("Shows", model);
         }
 
-        public ActionResult ShowsPop(string title, string start, string stop,  string desc, string channel)
+        public ActionResult ShowsPop(string title, string start, string stop,  string desc, string channel, string category)
         {
             Program p = new Program();
             p.Title = title;
@@ -42,6 +43,8 @@ namespace WebApplication.Controllers
             p.Channel = channel;
             p.Click = 1;
 
+            var c = category.Split('/');
+
             Programme pj = new Programme();
 
             pj.start = start;
@@ -49,6 +52,7 @@ namespace WebApplication.Controllers
             pj.stop = stop;
             pj.channel = channel;
             pj.desc.sv = desc;
+            pj.category.en = c.ToList();
 
             JsonProgramModel model = new JsonProgramModel(unitOfWork, p, pj);
 

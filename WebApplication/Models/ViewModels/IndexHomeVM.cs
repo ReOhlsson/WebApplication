@@ -23,6 +23,7 @@ namespace WebApplication.Models.ViewModels
             GetChannelName(channel);
             setStartTime();
             SetListOfDays();
+            ConvertListToString();
         }
         private void GetChannelName(string channel)
         {
@@ -64,6 +65,16 @@ namespace WebApplication.Models.ViewModels
                 d.Day = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(d.Day.ToLower());
 
                 ListOfDays.Add(d);
+            }
+        }
+        private void ConvertListToString()
+        {
+            foreach (var item in ProgramJsonList)
+            {
+                foreach (var c in item.category.en)
+                {
+                    item.CategoryToString += c + "/";
+                }
             }
         }
     }
