@@ -46,7 +46,7 @@ namespace WebApplication.Controllers
             p.Categories = category;
             p.Picture = "https://images.pexels.com/photos/239533/pexels-photo-239533.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
 
-            var c = category.Split('/');
+            var c = category.Split('/').ToArray();
 
             Programme pj = new Programme();
 
