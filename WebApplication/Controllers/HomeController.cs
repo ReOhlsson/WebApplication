@@ -28,7 +28,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public ActionResult Shows(string channel, string date = "2017-11-05")
+        public ActionResult Shows(string channel, string date)
         {
             IndexHomeVM model = new IndexHomeVM(jsUnitOfWork, date, channel);
             return PartialView("Shows", model);
@@ -74,6 +74,11 @@ namespace WebApplication.Controllers
         {
             //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
             return View();
+        }
+        public ActionResult ShowDays()
+        {
+            DaysVM model = new DaysVM();
+            return PartialView("", model);
         }
 
     }

@@ -8,7 +8,6 @@
 //    });
 //});
 function showPopUp(program) {
-    //var program = document.getElementsByClassName('programLink');
     debugger
     var title = program.getAttribute("data-title") // "3"
     var start = program.getAttribute("data-start") // "3"
