@@ -23,5 +23,6 @@ namespace RepoAndUnitOfWorkJSON.Entites
         public DateTime StopTime { get; set; }
         public string iconUrl { get; set; }
         public string CategoryToString { get; set; }
+        public string HasPassed { get; set; }
     }
 }

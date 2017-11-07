@@ -27,6 +27,11 @@ textarea {
     margin-top: 15px;
 }
 
+.programLinkPassed 
+{
+    color: dimgray;
+}
+
 .owl-carousel .owl-item img {
     height: 35px;
     width: 35px !important;

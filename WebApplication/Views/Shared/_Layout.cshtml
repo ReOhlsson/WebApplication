@@ -53,11 +53,28 @@
     @RenderSection("scripts", required: false)
 
     <script src="/Scripts/owl.carousel.min.js"></script>
+    @*<script src="/Scripts/markProgram.js"></script>*@
     
     <script>
         $(document).ready(function () {
             $(".owl-carousel").owlCarousel();
         });
     </script>
+
+    @*<script>
+        $(document).ready(function () {
+            var date = Math.round((new Date()).getTime() / 1000);
+            debugger
+            $(".program li a").each(function (key, value) {
+                var unix = value.getAttribute("data-start");
+                var a = parseInt(unix)
+
+                if (date > a) {
+                    this.style.background = "pink";
+                }
+            });
+        });
+    </script>*@
+
 </body>
 </html>

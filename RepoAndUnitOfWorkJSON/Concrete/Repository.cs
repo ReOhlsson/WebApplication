@@ -58,6 +58,19 @@ namespace RepoAndUnitOfWorkJSON.Concrete
                 DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
                 dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
                 p.StartTime = dateTime;
+
+                TimeSpan now = DateTime.Now.TimeOfDay;
+                TimeSpan programTime = p.StartTime.TimeOfDay;
+
+                if(now > programTime)
+                {
+                    p.HasPassed = "Passed";
+                }
+                else
+                {
+                    p.HasPassed = "NotPassed";
+                }
+
             }
             return jsonList;
 
