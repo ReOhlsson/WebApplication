@@ -88,10 +88,15 @@ ul, ol {
     color: #333;
     font-family: Tahoma, Arial, sans-serif;
 }
-.number  ul{
+/*.number  ul{
     background :#fff;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}*/
+.menudays {
+    font-size:13px;
 }
-.number a {
-    color:#333;
-    padding:10px;
+.menudays a {
+    font-weight:bold;
 }
