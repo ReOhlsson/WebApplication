@@ -31,8 +31,35 @@ namespace RepoAndUnitOfWorkJSON.Concrete
             programList = jp.jsontv.programme.ToList();
             
             ProgramList = programList.AsQueryable();
+
+            programList = ConvertListToString(programList);
+            programList = SetStartTime(programList);
             return programList;
 
+
+        }
+
+        private List<Programme> ConvertListToString(List<Programme> jsonList)
+        {
+            foreach (var item in jsonList)
+            {
+                foreach (var c in item.category.en)
+                {
+                    item.CategoryToString += c + "/";
+                }
+            }
+
+            return jsonList;
+        }
+        private List<Programme> SetStartTime(List<Programme> jsonList)
+        {
+            foreach (var p in jsonList)
+            {
+                DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
+                dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
+                p.StartTime = dateTime;
+            }
+            return jsonList;
 
         }
 

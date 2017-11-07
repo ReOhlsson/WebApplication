@@ -30,7 +30,10 @@ namespace WebApplication.Controllers
 
         public ActionResult Shows(string channel, string date)
         {
-            IndexHomeVM model = new IndexHomeVM(jsUnitOfWork, date, channel);
+            var result = jsUnitOfWork.ProgramRepository.ListOfJsonProgram(date, channel);
+            IndexHomeVM model = new IndexHomeVM(channel) {
+                ProgramJsonList = result,
+            };
             return PartialView("Shows", model);
         }
 
@@ -57,8 +60,24 @@ namespace WebApplication.Controllers
             pj.desc.sv = desc;
             pj.category.en = c.ToList();
 
-            JsonProgramModel model = new JsonProgramModel(unitOfWork, p, pj);
+            var result = unitOfWork.ProgramRepository.Find(x => x.Title == p.Title && x.Start_time == p.Start_time);
+            if (!result.Any())
+            {
+                unitOfWork.ProgramRepository.Create(p);
+                unitOfWork.Commit();
+            }
+            else
+            {
+                p = (Program)result.FirstOrDefault();
+                p.Click += 1;
+                unitOfWork.ProgramRepository.Update(p);
+                unitOfWork.Commit();
+            }
 
+            JsonProgramModel model = new JsonProgramModel() {
+                ProgramJson = pj
+            };
+            model.SetTime();
             return PartialView("PwPopup", model);
         }
 

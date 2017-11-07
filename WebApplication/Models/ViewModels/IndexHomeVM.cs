@@ -17,12 +17,9 @@ namespace WebApplication.Models.ViewModels
         public string ChannelName { get; set; }
         public string ChannelIconUrl { get; set; }
 
-        public IndexHomeVM(UnitOfWorkJson unit, string date, string channel)
+        public IndexHomeVM(string channel)
         {
-            ProgramJsonList = unit.ProgramRepository.ListOfJsonProgram(date, channel);
             GetChannelName(channel);
-            setStartTime();
-            ConvertListToString();
         }
         private void GetChannelName(string channel)
         {
@@ -54,26 +51,26 @@ namespace WebApplication.Models.ViewModels
                     break;
             }
         }
-        private void setStartTime()
-        {
-            foreach (var p in ProgramJsonList)
-            {
-                DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
-                dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
-                p.StartTime = dateTime;
-            }
+        //public void setStartTime()
+        //{
+        //    foreach (var p in ProgramJsonList)
+        //    {
+        //        DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
+        //        dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
+        //        p.StartTime = dateTime;
+        //    }
             
-        }
+        //}
         
-        private void ConvertListToString()
-        {
-            foreach (var item in ProgramJsonList)
-            {
-                foreach (var c in item.category.en)
-                {
-                    item.CategoryToString += c + "/";
-                }
-            }
-        }
+        //public void ConvertListToString()
+        //{
+        //    foreach (var item in ProgramJsonList)
+        //    {
+        //        foreach (var c in item.category.en)
+        //        {
+        //            item.CategoryToString += c + "/";
+        //        }
+        //    }
+        //}
     }
 }

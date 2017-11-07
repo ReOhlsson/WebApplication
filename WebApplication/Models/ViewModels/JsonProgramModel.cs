@@ -11,16 +11,12 @@ namespace WebApplication.Models.Models
     public class JsonProgramModel
     {
         public Programme ProgramJson { get; set; } = new Programme();
-        private Program Program { get; set; } = new Program();
 
-        public JsonProgramModel(UnitOfWork unit, Program pr, Programme jsPr)
+        public JsonProgramModel()
         {
-            unit.InsertOrUpdateClicks(pr);
-            this.ProgramJson = jsPr;
-            setTime();
             setChannelIcon();
         }
-        private void setTime()
+        public void SetTime()
         {
             DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
             dateTime = dateTime.AddSeconds(Convert.ToInt32(ProgramJson.start));
