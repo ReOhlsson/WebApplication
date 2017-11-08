@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using RepoAndUnitOfWork.Security;
 
 namespace RepoAndUnitOfWork.Concrete
 {
@@ -18,7 +19,13 @@ namespace RepoAndUnitOfWork.Concrete
 
         public Person GetUserCredentials(string username, string password)
         {
-            return dbContext.Person.Where(x => x.Username == username && x.Password == password).Include(x => x.Role).FirstOrDefault();
+            
+            var person =  dbContext.Person.Where(x => x.Username == username).Include(x => x.Role).FirstOrDefault();
+            if(CreateHash(password, person.Password))
+            {
+                return person;
+            }
+            return null;
         }
 
         public bool IsInRole(string username, string roleName)
@@ -27,6 +34,20 @@ namespace RepoAndUnitOfWork.Concrete
 
             return role.Any();
         }
+        private bool CreateHash(string password, string storedPass)
+        {
+            string storedPassword = storedPass;
+
+            byte[] hashByte = Convert.FromBase64String(storedPassword);
+
+            HashingPassword hash = new HashingPassword(hashByte);
+            if (hash.VerifyPassword(password))
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
 

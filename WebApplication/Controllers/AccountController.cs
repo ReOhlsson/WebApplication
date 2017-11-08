@@ -32,6 +32,7 @@ namespace WebApplication.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     return Redirect(ReturnUrl);
+                    
                 }
                 else
                 {
