@@ -1,0 +1,59 @@
+﻿@model WebApplication.Models.ViewModels.IndexHomeVM
+<div class="row" id="rowDays">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav menudays_channel"></ul>
+        </div>
+    </nav>
+</div>
+@foreach (var item in Model.ProgramJsonList)
+{
+    <div class="row">
+        <div class="col-lg-2">
+            <h4>BILD</h4>
+        </div>
+        <div class="col-lg-10">
+            <ul>
+                <li>
+                    <div>
+                        <h4>@item.title.sv</h4>
+                        <p>@item.desc.sv</p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="actors">
+                                    <h4>Skådespelare</h4>
+                                    @foreach (var a in item.credits.actor)
+                                    {
+                                        <p>@a.name</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="actors">
+                                    <h4>Regissör</h4>
+                                    @foreach (var a in item.credits.director)
+                                    {
+                                        <p>@a.name</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="actors">
+                                    <h4>Manusförfattare</h4>
+                                    @foreach (var a in item.credits.writer)
+                                    {
+                                        <p>@a.name</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+
+

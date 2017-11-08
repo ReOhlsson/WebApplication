@@ -238,11 +238,11 @@
     <Content Include="Views\Home\MyPage.cshtml" />
     <Content Include="Views\Home\ShowDays.cshtml" />
     <Content Include="Views\Shared\_NewsShows.cshtml" />
+    <Content Include="Views\Channel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Models\" />
-    <Folder Include="Views\Channel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

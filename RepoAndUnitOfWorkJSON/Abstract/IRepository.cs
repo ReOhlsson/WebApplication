@@ -14,5 +14,6 @@ namespace RepoAndUnitOfWorkJSON.Abstract
         List<Programme> ListOfJsonProgram(string date, string channel);
         //Method to find a specific program
         Programme Find(Expression<Func<Programme, bool>> predicate);
+
     }
 }
