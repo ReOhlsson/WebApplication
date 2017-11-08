@@ -15,6 +15,7 @@ using RepoAndUnitOfWork.Concrete;
 using WebApplication.Models.Models;
 using RepoAndUnitOfWork.Security;
 using System.Globalization;
+using System.IO;
 
 namespace WebApplication.Controllers
 {
@@ -22,6 +23,7 @@ namespace WebApplication.Controllers
     {
         UnitOfWorkJson jsUnitOfWork = new UnitOfWorkJson();
         UnitOfWork unitOfWork = new UnitOfWork();
+        //ProgramDbContext db = new ProgramDbContext();
 
         public ActionResult Index()
         {
@@ -116,6 +118,26 @@ namespace WebApplication.Controllers
             return PartialView("_NewsShows", indexHome);
         }
 
-    }
+        public ActionResult CreateViewList(string title, long start, long stop, string desc, string channel, string category)
+        {
+
+            Person person = new Person();
+            person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
+
+            Program program = new Program();
+            program = unitOfWork.ProgramRepository.Find(p => p.Title == title && p.Start_time == start).FirstOrDefault();
+
+            person.Programs.Add(program);
+
+            //db.Person.Add(person);
+
+            unitOfWork.PersonRepository.Create(person);
+
+
+
+            return View();
+        }
+
+        }
     
 }

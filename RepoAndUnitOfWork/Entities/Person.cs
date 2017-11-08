@@ -18,5 +18,6 @@ namespace RepoAndUnitOfWork.Entities
         public int Role_id { get; set; }
 
         public virtual Role Role { get; set; }
+        public virtual ICollection<Program> Programs { get; set; } 
     }
 }

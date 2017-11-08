@@ -17,8 +17,10 @@
 
             @if (User.Identity.IsAuthenticated)
             {
-            <button type="button" class="btn btn-primary">Lägg till i titt-listan</button>
+            <button class="btn btn-primary" onclick="CreateViewList(this)" id="@Model.ProgramJson.title.sv" data-title="@Model.ProgramJson.title.sv" data-start="@Model.ProgramJson.start" data-stop="@Model.ProgramJson.stop" data-desc="@Model.ProgramJson.desc.sv" data-channel="@Model.ProgramJson.channel" data-category="@Model.ProgramJson.CategoryToString">Lägg till i titt-listan</button>
             }
         </div>
     </div>
 </div>
+
+<li><a 
