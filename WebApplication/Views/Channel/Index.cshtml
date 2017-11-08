@@ -18,7 +18,9 @@
                     <div>
                         <h4>@item.title.sv</h4>
                         <p>@item.desc.sv</p>
-                        <div class="row">
+                        @if (item.credits.actor.Count != 0 || item.credits.director.Count != 0)
+                        { <span class="toogle-showmore">Visa mer</span> }
+                        <div class="row showmore">
                             <div class="col-lg-4">
                                 <div class="actors">
                                     <h4>Skådespelare</h4>
