@@ -11,7 +11,6 @@ namespace RepoAndUnitOfWork.Entities
     [Table("Program")]
     public class Program
     {
-        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public long Start_time { get; set; }
