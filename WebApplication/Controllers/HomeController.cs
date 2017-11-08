@@ -131,7 +131,7 @@ namespace WebApplication.Controllers
             {
                 item.Channel = item.Channel.Trim();
             }
-            return PartialView("_NewsShows", indexHome);
+            return PartialView("_NewsShows", indexHome); 
         }
 
         public ActionResult CreateViewList(string title, long start, long stop, string desc, string channel, string category)
