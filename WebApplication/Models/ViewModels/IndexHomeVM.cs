@@ -26,10 +26,10 @@ namespace WebApplication.Models.ViewModels
         {
             switch (channel)
             {
-                case "svt1.svt":
-                    ChannelName = "SVT1";
+                case "tv10":
+                    ChannelName = "TV10";
                     ChannelIconUrl = "http://logos.xmltv.se/svt1.svt.se.png";
-                    ChannelOriginalName = "svt1.svt";
+                    ChannelOriginalName = "tv10";
                     break;
                 case "tv3":
                     ChannelName = "TV3";

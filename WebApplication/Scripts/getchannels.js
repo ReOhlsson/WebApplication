@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     var resultDate = new Date().toISOString().slice(0,10); 
  
-    var channelName = ["svt1.svt", "tv3", "tv4"];
+    var channelName = ["tv10", "tv3", "tv4"];
     var number = 3;
 
     $.each(channelName, function (index, value) {
@@ -22,7 +22,7 @@
 
 function changeShowSchedual(days) {
     var date = days.getAttribute("data-dateTime");
-    var channelNames = ["svt1.svt", "tv3", "tv4","kanal5", "tv6", "tv8"];
+    var channelNames = ["tv10", "tv3", "tv4", "kanal5", "tv6", "tv8"];
 
     $.each(channelNames, function (index, value) {
         $.ajax({
