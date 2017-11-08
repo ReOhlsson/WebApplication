@@ -113,7 +113,6 @@ namespace WebApplication.Controllers
             {
                 item.Channel = item.Channel.Trim();
             }
-
             return PartialView("_NewsShows", indexHome);
         }
 

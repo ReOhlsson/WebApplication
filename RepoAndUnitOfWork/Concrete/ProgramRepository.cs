@@ -13,7 +13,6 @@ namespace RepoAndUnitOfWork.Concrete
         public ProgramRepository(ProgramDbContext pb) : base(pb)
         {
         }
-
         public IEnumerable<Program> GetMostPopular(int number)
         {
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
