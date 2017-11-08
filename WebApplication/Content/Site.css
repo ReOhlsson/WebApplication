@@ -146,3 +146,9 @@ ul, ol {
 .menudays a {
     font-weight:bold;
 }
+.showmore {
+    display:none;
+}
+.showmore h4 {
+    display:none;
+}

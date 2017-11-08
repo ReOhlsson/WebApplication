@@ -46,3 +46,7 @@ $(".programLink").click(function () {
         }
     });
 });
+$(".toogle-showmore").click(function () {
+    debugger
+    $(this).next().css( "display", "block" );
+});
