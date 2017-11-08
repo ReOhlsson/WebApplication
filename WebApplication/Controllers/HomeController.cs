@@ -16,6 +16,7 @@ using WebApplication.Models.Models;
 using RepoAndUnitOfWork.Security;
 using System.Globalization;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Controllers
 {
@@ -23,7 +24,6 @@ namespace WebApplication.Controllers
     {
         UnitOfWorkJson jsUnitOfWork = new UnitOfWorkJson();
         UnitOfWork unitOfWork = new UnitOfWork();
-        //ProgramDbContext db = new ProgramDbContext();
 
         public ActionResult Index()
         {
@@ -65,15 +65,31 @@ namespace WebApplication.Controllers
             var result = unitOfWork.ProgramRepository.Find(x => x.Title == p.Title && x.Start_time == p.Start_time);
             if (!result.Any())
             {
-                unitOfWork.ProgramRepository.Create(p);
-                unitOfWork.Commit();
+                try
+                {
+                    unitOfWork.ProgramRepository.Create(p);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
             else
             {
-                p = (Program)result.FirstOrDefault();
-                p.Click += 1;
-                unitOfWork.ProgramRepository.Update(p);
-                unitOfWork.Commit();
+                try
+                {
+                    p = (Program)result.FirstOrDefault();
+                    p.Click += 1;
+                    unitOfWork.ProgramRepository.Update(p);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
             JsonProgramModel model = new JsonProgramModel() {
@@ -120,24 +136,40 @@ namespace WebApplication.Controllers
 
         public ActionResult CreateViewList(string title, long start, long stop, string desc, string channel, string category)
         {
-
             Person person = new Person();
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
 
+            
             Program program = new Program();
             program = unitOfWork.ProgramRepository.Find(p => p.Title == title && p.Start_time == start).FirstOrDefault();
 
-            person.Programs.Add(program);
+            
+            var result = unitOfWork.PersonProgramRepository.Find(x => x.Person_Id == person.Id && x.Program_id == program.Id);
 
-            //db.Person.Add(person);
-
-            unitOfWork.PersonRepository.Create(person);
-
-
-
+            if (!result.Any())
+            {
+                try
+                {
+                    DateTime date = DateTime.Now;
+                    PersonProgram personProgram = new PersonProgram()
+                    {
+                        Person_Id = person.Id,
+                        Program_id = program.Id,
+                        SavedDate = date
+                    };
+                    unitOfWork.PersonProgramRepository.Create(personProgram);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    //Skicka ett error message
+                    throw;
+                }
+                
+            }
             return View();
         }
 
-        }
+    }
     
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace RepoAndUnitOfWork.Entities
     [Table("Program")]
     public class Program
     {
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public long Start_time { get; set; }
@@ -20,5 +22,6 @@ namespace RepoAndUnitOfWork.Entities
         public string Picture { get; set; }
         public string Description { get; set; }
         public string Categories { get; set; }
+
     }
 }
