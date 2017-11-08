@@ -236,7 +236,7 @@
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
-    <Content Include="Views\Home\ShowDays.cshtml" />
+    <Content Include="Views\Shared\ShowDays.cshtml" />
     <Content Include="Views\Shared\_NewsShows.cshtml" />
     <Content Include="Views\Channel\Index.cshtml" />
   </ItemGroup>

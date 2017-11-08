@@ -2,7 +2,9 @@
 <div class="row" id="rowDays">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <ul class="nav navbar-nav menudays_channel"></ul>
+            <ul class="nav navbar-nav menudays_channel">
+                @Html.Action("ShowDays", "Channel")
+            </ul>
         </div>
     </nav>
 </div>
