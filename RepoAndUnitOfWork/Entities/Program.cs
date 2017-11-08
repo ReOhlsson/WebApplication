@@ -11,6 +11,11 @@ namespace RepoAndUnitOfWork.Entities
     [Table("Program")]
     public class Program
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Program()
+        {
+            this.Person = new HashSet<Person>();
+        }
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
@@ -22,6 +27,9 @@ namespace RepoAndUnitOfWork.Entities
         public string Picture { get; set; }
         public string Description { get; set; }
         public string Categories { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Person> Person { get; set; }
 
     }
 }
