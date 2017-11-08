@@ -25,13 +25,12 @@
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Min sida", "MyPage", "Home")</li>
                     @if(User.Identity.IsAuthenticated)
-                    { 
-                        <li>@Html.ActionLink("Logga ut","SignOut","Account")</li>
-
+                    {                   
                         if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
                         {
                             <li>@Html.ActionLink("Administrera", "Index", "People")</li>
                         }
+                        <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
                     }
 
                 </ul>
