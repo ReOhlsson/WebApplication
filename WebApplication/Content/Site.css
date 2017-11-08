@@ -23,6 +23,13 @@ textarea {
     max-width: 280px;
 }
 
+.newsShows {
+    background-size: 396px 284px;
+    height: 200px;
+    margin: 10px 1px;
+    padding: 0;
+}
+
 #rowDays {
     margin-top: 15px;
 }
@@ -58,7 +65,7 @@ textarea {
     opacity: 0.8;
     width: 100%;
     padding: 5px 0 5px 10px;
-    margin: 10px 0 0 0;
+    margin: 9px 0 0 0;
     z-index:2;
     font-size: 22px;
 }

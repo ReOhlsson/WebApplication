@@ -1,12 +1,4 @@
-﻿//$(document).ready(function () {
-//    $('.programLink').click(function () {
-        
-//        var string = $(this).attr('value');
-//        var res = string.split('/');
-
-//        $('.popularShows').load("/Home/ShowsPop", { array: res });
-//    });
-//});
+﻿
 function showPopUp(program) {
     var title = program.getAttribute("data-title") // "3"
     var start = program.getAttribute("data-start") // "3"
@@ -54,16 +46,3 @@ $(".programLink").click(function () {
         }
     });
 });
-
-//$(window).on('load', function () {
-//    var date = Math.round((new Date()).getTime() / 1000);
-//    debugger
-//    $(".program li a").each(function (key, value) {
-//        var unix = value.getAttribute("data-start");
-//        var a = parseInt(unix)
-
-//        if (date >= a) {
-//            this.style.background = "pink";
-//        }
-//    });
-//});
