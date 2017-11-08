@@ -17,7 +17,13 @@ namespace RepoAndUnitOfWork.Concrete
         public IEnumerable<Program> GetMostPopular(int number)
         {
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            return dbContext.Program.OrderBy(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(number).Where(x => x.End_time < unixTimestamp);
+            return dbContext.Program.OrderBy(t => t.Click >= 1).OrderByDescending(t => t.Click).Take(number).Where(x => x.End_time > unixTimestamp);
+        }
+
+        public IEnumerable<Program> GetProgramNews(int number)
+        {
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            return dbContext.Program.Where(t => t.Editor_recommendation == true).Take(number).Where(x => x.End_time > unixTimestamp);
         }
     }
 }

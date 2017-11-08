@@ -39,12 +39,15 @@ namespace WebApplication.Models.ViewModels
                     break;
                 case "tv6":
                     ChannelName = "TV6";
+                    ChannelIconUrl = "http://logos.xmltv.se/tv6.se.png";
                     break;
                 case "kanal5":
                     ChannelName = "Kanal 5";
+                    ChannelIconUrl = "http://logos.xmltv.se/kanal5.se.png";
                     break;
                 case "tv8":
                     ChannelName = "TV8";
+                    ChannelIconUrl = "http://logos.xmltv.se/tv8.se.png";
                     break;
                 default:
                     ChannelName = "Error";

@@ -105,6 +105,18 @@ namespace WebApplication.Controllers
             return PartialView("", model);
         }
 
+        public ActionResult LoadProgramNews()
+        {
+            var indexHome = unitOfWork.ProgramRepository.GetProgramNews(4);
+
+            foreach (var item in indexHome)
+            {
+                item.Channel = item.Channel.Trim();
+            }
+
+            return PartialView("_NewsShows", indexHome);
+        }
+
     }
     
 }

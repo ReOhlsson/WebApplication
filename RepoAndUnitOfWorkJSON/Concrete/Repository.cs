@@ -59,10 +59,9 @@ namespace RepoAndUnitOfWorkJSON.Concrete
                 dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
                 p.StartTime = dateTime;
 
-                TimeSpan now = DateTime.Now.TimeOfDay;
-                TimeSpan programTime = p.StartTime.TimeOfDay;
+                int result = DateTime.Compare(dateTime, DateTime.Now);
 
-                if(now > programTime)
+                if(result < 0)
                 {
                     p.HasPassed = "Passed";
                 }

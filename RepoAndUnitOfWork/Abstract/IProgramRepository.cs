@@ -12,5 +12,6 @@ namespace RepoAndUnitOfWork.Abstract
     public interface IProgramRepository : IRepository<Program>
     {
         IEnumerable<Program> GetMostPopular(int number);
+        IEnumerable<Program> GetProgramNews(int number);
     }
 }

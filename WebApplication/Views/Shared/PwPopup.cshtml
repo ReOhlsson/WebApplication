@@ -2,7 +2,7 @@
 
 <div id="popupMovie" class="overlay">
     <div class="popup">
-        <img class="channelIconPopup" src="@Model.ProgramJson.iconUrl" />
+        <img class="channelIconPopup" src="@("http://logos.xmltv.se/"+Model.ProgramJson.channel+".png")" />
         <h3>@Model.ProgramJson.title.sv</h3>
         <span class="close" onclick="closePopUp()">&times;</span>
         <div class="content">
