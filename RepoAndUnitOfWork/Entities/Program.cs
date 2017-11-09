@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace RepoAndUnitOfWork.Entities
 {
     [Table("Program")]
-    public class Program
+    public partial class Program
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Program()

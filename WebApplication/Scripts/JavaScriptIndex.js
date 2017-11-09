@@ -126,3 +126,21 @@ function CreateEditorRecommendation(program) {
         }
     });
 }
+
+function setChannelList() {
+    var allValues = [];
+
+    $('input:checkbox[name=channelCheckBox]:checked').each(function () {
+        allValues.push($(this).val());
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/home/SetChannelCookies",
+        data: { arrayOfChannels: allValues },
+        async: false,
+        success: function () {
+        }
+    });
+
+}

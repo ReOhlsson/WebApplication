@@ -71,15 +71,6 @@ namespace RepoAndUnitOfWork.Concrete
             return dbContext.Set<T>().Where(predicate);
         }
 
-        public IEnumerable<T> GetMostPopular(Expression<Func<T, bool>> predicate)
-        {
-            return dbContext.Set<T>().Where(predicate);
-        }
-
-        public IEnumerable<T> GetUserCredentials(Expression<Func<T, bool>> predicate)
-        {
-            return dbContext.Set<T>().Where(predicate);
-        }
 
 
 

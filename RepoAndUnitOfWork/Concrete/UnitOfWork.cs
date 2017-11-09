@@ -17,12 +17,15 @@ namespace RepoAndUnitOfWork.Concrete
         public IProgramRepository ProgramRepository { get; private set; }
         public IPersonRepository PersonRepository { get; private set; }
         public IPersonProgramRepository PersonProgramRepository { get; private set; }
+        public IChannelRepository ChannelRepository { get; private set; }
+
 
         public UnitOfWork()
         {
             ProgramRepository = new ProgramRepository(dbContext);
             PersonRepository = new PersonRepository(dbContext);
             PersonProgramRepository = new PersonProgramRepository(dbContext);
+            ChannelRepository = new ChannelRepository(dbContext);
         }
         //method to save all changes to repositories 
         public void Commit()

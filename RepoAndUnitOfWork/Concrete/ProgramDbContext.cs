@@ -16,6 +16,7 @@ namespace RepoAndUnitOfWork.Concrete
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<PersonProgram> PersonProgram { get; set; }
+        public virtual DbSet<Channels> Channels { get; set; }
 
         public ProgramDbContext() : base ("name=ProgramDbContext")
         {

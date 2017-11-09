@@ -1,1 +1,15 @@
-﻿<h3>Välkommen @(HttpContext.Current.User.Identity.Name)</h3>
+﻿@model List<RepoAndUnitOfWork.Entities.Channels>
+
+<h3>Välkommen @(HttpContext.Current.User.Identity.Name)</h3>
+<hr />
+<p>Välj vilka kanaler som ingår i din kanal-lista</p>
+<div class="btn-group" data-toggle="buttons">
+
+    @foreach (var channel in Model)
+    {
+        <label class="btn btn-info active">
+            <input name="channelCheckBox" type="checkbox" checked="" value="@channel.Name"> @channel.Name
+        </label>
+    }
+    <button type="button" class="btn btn-primary" onclick="setChannelList()">Spara</button>
+</div>

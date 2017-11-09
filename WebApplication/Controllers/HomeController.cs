@@ -123,7 +123,8 @@ namespace WebApplication.Controllers
         [Authorize]
         public ActionResult MyPage()
         {
-            return View();
+            List<Channels> channelList = unitOfWork.ChannelRepository.GetAllChannels().ToList();
+            return View(channelList);
         }
 
         public ActionResult ShowDays()
@@ -296,6 +297,30 @@ namespace WebApplication.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult SetChannelCookies(string[] arrayOfChannels)
+        {
+            string channel = "";
+
+            foreach(var i in arrayOfChannels)
+            {
+                channel += i+",";
+            }
+            // Cookie
+            HttpCookie cookie = new HttpCookie("channels");
+            cookie.Value = channel;
+            cookie.Expires = DateTime.Now.AddDays(30.0);
+            HttpContext.Response.SetCookie(cookie);
+            cookie.HttpOnly = false;
+
+            return View();
+        }
+
+        public ActionResult GetCookie()
+        {
+            HttpCookie cookie = HttpContext.Request.Cookies.Get("channels");
+            return Json(cookie.Value);
         }
 
     }
