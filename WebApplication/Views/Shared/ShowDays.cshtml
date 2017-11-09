@@ -3,5 +3,6 @@
 @foreach (var item in Model.ListOfDays)
 {
     //<li class="days nav-item"><a class="showDayShow nav-link" onclick="changeShowSchedual(this)" data-dateTime="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</a></li>
-    <button type="button" class="btn btn-success"onclick="changeShowSchedual(this)" data-dateTime="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</button>
+    <li class="days nav-item"><button type="button" class="btn btn-success" onclick="changeShowSchedual(this)" data-dateTime="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</button></li>
+
 }

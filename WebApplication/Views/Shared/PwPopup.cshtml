@@ -20,7 +20,7 @@
             <button class="btn btn-primary" onclick="CreateViewList(this)" id="@Model.ProgramJson.title.sv" data-title="@Model.ProgramJson.title.sv" data-start="@Model.ProgramJson.start" data-stop="@Model.ProgramJson.stop" data-desc="@Model.ProgramJson.desc.sv" data-channel="@Model.ProgramJson.channel" data-category="@Model.ProgramJson.CategoryToString" data-timeStart="@Model.ProgramJson.StartTime.ToShortTimeString()" data-timeEnd="@Model.ProgramJson.StopTime.ToShortTimeString()">Lägg till i titt-listan</button>
             }
 
-            @if (Roles.IsUserInRole(User.Identity.Name, "Editor") || Roles.IsUserInRole(User.Identity.Name, "Admin") && Model.ProgramJson.HasPassed == "NotPassed")
+            else if (Roles.IsUserInRole(User.Identity.Name, "Editor") && Model.ProgramJson.HasPassed == "NotPassed" || Roles.IsUserInRole(User.Identity.Name, "Admin") && Model.ProgramJson.HasPassed == "NotPassed")
             {
                 <button class="btn btn-primary" onclick="CreateEditorRecommendation(this)" id="@Model.ProgramJson.title.sv" data-title="@Model.ProgramJson.title.sv" data-start="@Model.ProgramJson.start" data-stop="@Model.ProgramJson.stop" data-desc="@Model.ProgramJson.desc.sv" data-channel="@Model.ProgramJson.channel" data-category="@Model.ProgramJson.CategoryToString" data-timeStart="@Model.ProgramJson.StartTime" data-timeEnd="@Model.ProgramJson.StopTime">Lägg till som Nyhetspuff</button>
             }
