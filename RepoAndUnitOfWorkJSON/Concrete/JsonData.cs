@@ -20,11 +20,17 @@ namespace RepoAndUnitOfWorkJSON.Concrete
 
         public JsonProgram GetJsonChannel(string date, string channel)
         {
-            string url = "http://json.xmltv.se/" + channel + ".se_" + date + ".js.gz";
-            var json = new WebClient().DownloadString(url);
-            JsonProgram jp = JsonConvert.DeserializeObject<JsonProgram>(json);
+            if(channel == null || date == null)
+            {
+                return null;
+            }else
+            {
+                string url = "http://json.xmltv.se/" + channel + ".se_" + date + ".js.gz";
+                var json = new WebClient().DownloadString(url);
+                JsonProgram jp = JsonConvert.DeserializeObject<JsonProgram>(json);
 
-            return jp;
+                return jp;
+            }
         }
     }
 }

@@ -196,8 +196,19 @@ namespace WebApplication.Controllers
         {
             var person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
             var result = unitOfWork.PersonProgramRepository.Find(x => x.Program_id == id && x.Person_Id == person.Id).FirstOrDefault();
-            unitOfWork.PersonProgramRepository.Delete(result);
-            unitOfWork.Commit();
+            if(result != null)
+            {
+                try
+                {
+                    unitOfWork.PersonProgramRepository.Delete(result);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    //Error message
+                    throw;
+                }
+            }
 
             return RedirectToAction("GetViewList");
         }
