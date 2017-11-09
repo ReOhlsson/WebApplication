@@ -1,10 +1,10 @@
 ﻿
 function showPopUp(program) {
-    var title = program.getAttribute("data-title") // "3"
-    var start = program.getAttribute("data-start") // "3"
-    var stop = program.getAttribute("data-stop") // "3"
-    var desc = program.getAttribute("data-desc") // "3"
-    var channel = program.getAttribute("data-channel") // "3"
+    var title = program.getAttribute("data-title")
+    var start = program.getAttribute("data-start")
+    var stop = program.getAttribute("data-stop")
+    var desc = program.getAttribute("data-desc")
+    var channel = program.getAttribute("data-channel")
     var category = program.getAttribute("data-category")
 
     $.ajax({
@@ -32,11 +32,11 @@ $(".toogle-showmore").click(function () {
 
 
 function CreateViewList(program) {
-    var title = program.getAttribute("data-title") // "3"
-    var start = program.getAttribute("data-start") // "3"
-    var stop = program.getAttribute("data-stop") // "3"
-    var desc = program.getAttribute("data-desc") // "3"
-    var channel = program.getAttribute("data-channel") // "3"
+    var title = program.getAttribute("data-title")
+    var start = program.getAttribute("data-start")
+    var stop = program.getAttribute("data-stop")
+    var desc = program.getAttribute("data-desc")
+    var channel = program.getAttribute("data-channel")
     var category = program.getAttribute("data-category")
 
     $.ajax({
@@ -54,8 +54,6 @@ function CreateViewList(program) {
 }
 
 function GetViewList() {
-    //var userName = program.getAttribute("data-name")
-
     $.ajax({
         type: "GET",
         dataType: "html",
@@ -65,9 +63,10 @@ function GetViewList() {
         }
     });
 }
+
 function removeProgram(program) {
     var programId = program.getAttribute("data-programId");
-    debugger
+
     $.ajax({
         type: "POST",
         url: "/home/deleteProgram",
@@ -77,6 +76,30 @@ function removeProgram(program) {
             GetViewList();
         }
     });
-
 }
 
+function GetEditorList() {
+    $.ajax({
+        type: "GET",
+        dataType: "html",
+        url: "/home/geteditorlist",
+        success: function (data) {
+            $(".popover-content").append(data);
+        }
+    });
+}
+
+
+function removeEditorRecommendation(program) {
+    var programId = program.getAttribute("data-programId");
+
+    $.ajax({
+        type: "POST",
+        url: "/home/removeeditorrecommendation",
+        data: { id: programId },
+        success: function (data) {
+            $('.popover-content').empty()
+            GetEditorList();
+        }
+    });
+}
