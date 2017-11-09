@@ -21,7 +21,7 @@
                         <h4>@item.title.sv</h4>
                         <p>@item.desc.sv</p>
                         @if (item.credits.actor.Count != 0 || item.credits.director.Count != 0 || item.credits.writer.Count != 0)
-                        { <input type='checkbox' style='display: none' id=@item.start>
+                        { <input type='checkbox' style='display: none' id=@item.start class="channelShowMore">
                             <label for=@item.start>Visa</label>}
                         <div class="row showmore">
                             <div class="col-lg-4">
@@ -60,6 +60,9 @@
     </div>
     <br />
 }
+<link href="~/Content/EachChannel.css" rel="stylesheet" type="text/css" />
+
+
 
 
 

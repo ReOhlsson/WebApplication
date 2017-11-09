@@ -154,28 +154,3 @@ ul, ol {
 .menudays a {
     font-weight:bold;
 }*/
-.showmore {
-    display:none;
-}
-
-/*.showmore { margin-top: 10px; border: 1px solid black; width: 200px; height: 100px;
-    padding: 5px;
-}*/
-input:checked + label + .showmore { display: block; }
-input + label:after { content: " Mer"; }
-input:checked + label:after { content: " Mindre"; }
-
-label {
-    background-color: #ffa200;
-    box-shadow: inset 0 2px 3px rgba(255,255,255,0.2), inset 0 -2px 3px rgba(0,0,0,0.2);
-    border-radius: 4px;
-    font-size: 16px;
-    display: inline-block;
-    padding: 2px 5px;
-    cursor: pointer;
-    color: #fff;
-}
-.channel {
-    background: #626a75;
-    padding:12px 0;
-}
