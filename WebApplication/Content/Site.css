@@ -23,6 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+.btn{
+    margin: 7px;
+}
+
 .newsShows {
     background-size: 396px 284px;
     height: 200px;

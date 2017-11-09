@@ -25,27 +25,6 @@ function closePopUp() {
     document.getElementById('popupMovie').style.display = "none";
 }
 
-//$(".programLink").click(function () {
-//    var program = document.getElementsByClassName('programLink');
-//    var title = program.getAttribute("data-title") 
-//    var start = program.getAttribute("data-start")
-//    var stop = program.getAttribute("data-stop")
-//    var desc = program.getAttribute("data-desc") 
-//    var channel = program.getAttribute("data-channel") 
-
-//    var animalType = animal.getAttribute("data-animal-type");
-
-
-//    $.ajax({
-//        type: "GET",
-//        url: "/home/showspop",
-//        data: { title:title , start :start, stop:stop, desc :desc, channel: channel },
-//        async: false,
-//        success: function (data) {
-//            $('#programPopup' + index).html(data);
-//        }
-//    });
-//});
 $(".toogle-showmore").click(function () {
     debugger
     $(this).next().css( "display", "block" );
@@ -73,3 +52,18 @@ function CreateViewList(program) {
         }
     });
 }
+
+function GetViewList(program) {
+    var userName = program.getAttribute("data-name")
+
+    $.ajax({
+        type: "GET",
+        dataType: "html",
+        url: "/home/getviewlist",
+        data: { userName: userName },
+        success: function (data) {
+            $(".popover-content").append(data);
+        }
+    });
+}
+

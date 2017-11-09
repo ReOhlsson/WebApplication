@@ -170,6 +170,16 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        public ActionResult GetViewList(string userName)
+        {
+            Person person = new Person();
+            person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
+
+            PersonProgram pp = unitOfWork.PersonProgramRepository.Find()
+            List<Person> pr  = unitOfWork.PersonRepository.Find(x => x.Program.Any(p => p.Id == person.Id)).ToList();
+
+            return PartialView("_ViewList", pr);
+        }
     }
     
 }
