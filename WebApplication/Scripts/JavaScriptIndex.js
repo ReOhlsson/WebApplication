@@ -53,17 +53,30 @@ function CreateViewList(program) {
     });
 }
 
-function GetViewList(program) {
-    var userName = program.getAttribute("data-name")
+function GetViewList() {
+    //var userName = program.getAttribute("data-name")
 
     $.ajax({
         type: "GET",
         dataType: "html",
         url: "/home/getviewlist",
-        data: { userName: userName },
         success: function (data) {
             $(".popover-content").append(data);
         }
     });
+}
+function removeProgram(program) {
+    var programId = program.getAttribute("data-programId");
+    debugger
+    $.ajax({
+        type: "POST",
+        url: "/home/deleteProgram",
+        data: { id: programId },
+        success: function (data) {
+            $('.popover-content').empty()
+            GetViewList();
+        }
+    });
+
 }
 

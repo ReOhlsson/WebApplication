@@ -191,5 +191,15 @@ namespace WebApplication.Controllers
 
             return PartialView("_ViewList", newList);
         }
+        [HttpPost]
+        public ActionResult DeleteProgram(int id)
+        {
+            var person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
+            var result = unitOfWork.PersonProgramRepository.Find(x => x.Program_id == id && x.Person_Id == person.Id).FirstOrDefault();
+            unitOfWork.PersonProgramRepository.Delete(result);
+            unitOfWork.Commit();
+
+            return RedirectToAction("GetViewList");
+        }
     }
 }
