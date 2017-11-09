@@ -29,7 +29,7 @@ namespace RepoAndUnitOfWork.Concrete
         public IEnumerable<Program> GetProgramNews(int number)
         {
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            return dbContext.Program.Where(t => t.Editor_recommendation == true).Take(number).Where(x => x.End_time > unixTimestamp);
+            return dbContext.Program.Where(t => t.Editor_recommendation == true && t.End_time > unixTimestamp).Take(number);
         }
     }
 }

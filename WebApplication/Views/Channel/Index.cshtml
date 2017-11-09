@@ -1,13 +1,5 @@
 ﻿@model WebApplication.Models.ViewModels.IndexHomeVM
-<div class="row" id="rowDays">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav menudays_channel">
-                @Html.Action("ShowDays", "Channel")
-            </ul>
-        </div>
-    </nav>
-</div>
+<br />
 @foreach (var item in Model.ProgramJsonList)
 {
     <div class="row channel">

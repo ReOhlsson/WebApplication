@@ -308,20 +308,19 @@ namespace WebApplication.Controllers
                 channel += i+",";
             }
             // Cookie
-            HttpCookie cookie = new HttpCookie("channels");
-            cookie.Value = channel;
-            cookie.Expires = DateTime.Now.AddDays(30.0);
-            HttpContext.Response.SetCookie(cookie);
-            cookie.HttpOnly = false;
+            HttpCookie cookies = new HttpCookie("channels");
+            cookies.Value = channel;
+            cookies.Expires = DateTime.Now.AddMinutes(120.0);
+            HttpContext.Response.SetCookie(cookies);
 
             return View();
         }
 
-        public ActionResult GetCookie()
-        {
-            HttpCookie cookie = HttpContext.Request.Cookies.Get("channels");
-            return Json(cookie.Value);
-        }
+        //public ActionResult GetCookie()
+        //{
+        //    HttpCookie cookies = HttpContext.Request.Cookies.Get("channels");
+        //    return Json(cookies.Value);
+        //}
 
     }
 }
