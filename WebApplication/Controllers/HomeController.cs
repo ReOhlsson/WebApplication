@@ -183,13 +183,14 @@ namespace WebApplication.Controllers
 
             //var program = unitOfWork.PersonProgramRepository.Find(x => x.Person_Id == person.Id).Select(x => x.Program_id);
 
-            var program = from c in db.PersonProgram
+            var program = (from c in db.PersonProgram
                           join o in db.Program on c.Program_id equals o.Id
                           where c.Person_Id == person.Id
-                          select new { c.Program };
+                          select new { c.Program }).ToList();
 
             var newList = program.ToList();
-            return PartialView("_ViewList", newList);
+           
+            return PartialView("_ViewList", model);
         }
     }
 }
