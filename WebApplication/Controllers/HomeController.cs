@@ -175,13 +175,7 @@ namespace WebApplication.Controllers
             Person person = new Person();
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
 
-            //PersonProgram pp = unitOfWork.PersonProgramRepository.Find()
-            //List<Person> pr  = unitOfWork.PersonRepository.Find(x => x.Program.Any(p => p.Id == person.Id)).ToList();
-
             ProgramDbContext db = new ProgramDbContext();
-            //var program = unitOfWork.PersonProgramRepository.Find(x => x.Person.Id == person.Id).SelectMany(x => x.Program);
-
-            //var program = unitOfWork.PersonProgramRepository.Find(x => x.Person_Id == person.Id).Select(x => x.Program_id);
 
             var program = from c in db.PersonProgram
                           join o in db.Program on c.Program_id equals o.Id
@@ -189,7 +183,12 @@ namespace WebApplication.Controllers
                           select c.Program as Program;
 
             var newList = program.ToList();
-           
+
+            foreach (var item in newList)
+            {
+                item.Channel = item.Channel.Trim();
+            }
+
             return PartialView("_ViewList", newList);
         }
     }

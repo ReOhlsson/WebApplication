@@ -23,7 +23,11 @@ textarea {
     max-width: 280px;
 }
 
-.btn{
+.viewListLogo {
+    height: 16px;
+}
+
+.btn {
     margin: 7px;
 }
 

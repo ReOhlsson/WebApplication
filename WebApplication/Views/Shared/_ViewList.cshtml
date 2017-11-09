@@ -1,8 +1,8 @@
 ﻿@model  List<RepoAndUnitOfWork.Entities.Program>
 
-@foreach(var program in Model)
+@foreach (var program in Model)
 {
-    <p>@program.Title</p>
+    <img class ="viewListLogo"src="@("http://logos.xmltv.se/"+program.Channel+".png")" /><p>@program.Title   @program.Start_time</p>
 }
 
 
