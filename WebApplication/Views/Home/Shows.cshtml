@@ -1,6 +1,6 @@
 ﻿<div class="number">
     <img class="channelIcon" src=@Model.ChannelIconUrl />
-    <h2 class="show-heading">@Html.ActionLink((string)@Model.ChannelName , "Index", "Channel", new { channel = Model.ChannelOriginalName }, null)</h2>  
+    <h2 class="show-heading">@Html.ActionLink((string)@Model.ChannelName , "Index", "Channel", new { channel = Model.ChannelOriginalName}, null)</h2>  
     <ul class="program">
         @foreach (var item in Model.ProgramJsonList)
         {

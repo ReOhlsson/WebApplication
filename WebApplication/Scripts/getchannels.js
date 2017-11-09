@@ -23,7 +23,7 @@
 function changeShowSchedual(days) {
     var date = days.getAttribute("data-dateTime");
     var channelNames = ["tv10", "tv3", "tv4", "kanal5", "tv6", "tv8"];
-
+    debugger
     $.each(channelNames, function (index, value) {
         $.ajax({
             type: "GET",
@@ -31,9 +31,6 @@ function changeShowSchedual(days) {
             data: { channel: value, date : date },
             async: false,
             success: function (data) {
-                
-            },
-            complete: function (data) {
                 $('.number' + index).html(data);
             }
         });
