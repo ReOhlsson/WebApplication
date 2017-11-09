@@ -110,7 +110,7 @@ namespace WebApplication.Controllers
 
         public ActionResult LoadPopularPrograms()
         {
-            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(5);
+            var indexHome = unitOfWork.ProgramRepository.GetMostPopular(6);
 
             foreach(var item in indexHome)
             {
@@ -134,7 +134,7 @@ namespace WebApplication.Controllers
 
         public ActionResult LoadProgramNews()
         {
-            var indexHome = unitOfWork.ProgramRepository.GetProgramNews(4);
+            var indexHome = unitOfWork.ProgramRepository.GetProgramNews(6);
 
             foreach (var item in indexHome)
             {

@@ -3,7 +3,7 @@
     @foreach (var item in Model)
     {
         <div class="popularShows" style="background-image: url(@item.Picture)">
-            <img src="@("http://logos.xmltv.se/"+item.Channel+".png")" />
+            <img src="@("http://logos.xmltv.se/"+item.Channel+".png")"/>
             <a class="aPopularShows" onclick="showPopUp(this)" id="@item.Title" data-title="@item.Title" data-start="@item.Start_time" data-stop="@item.End_time" data-desc="@item.Description" data-channel="@item.Channel" data-category="@item.Categories">@item.Start_Time_String @item.Title</a>
         </div>
     }
