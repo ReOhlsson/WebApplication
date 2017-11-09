@@ -25,11 +25,27 @@ namespace WebApplication.Models.Models
             DateTime dateTimeStop = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
             dateTimeStop = dateTimeStop.AddSeconds(Convert.ToInt32(ProgramJson.stop));
             ProgramJson.StopTime = dateTimeStop;
+
+            SetPassedOrNotPassed(dateTime);
         }
 
         private void setChannelIcon()
         {
             ProgramJson.iconUrl = "http://logos.xmltv.se/" + ProgramJson.channel + ".png";
+        }
+
+        private void SetPassedOrNotPassed(DateTime dateTime)
+        {
+            int result = DateTime.Compare(dateTime, DateTime.Now);
+
+            if (result < 0)
+            {
+                ProgramJson.HasPassed = "Passed";
+            }
+            else
+            {
+                ProgramJson.HasPassed = "NotPassed";
+            }
         }
     }
 }
