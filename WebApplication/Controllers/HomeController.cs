@@ -32,6 +32,13 @@ namespace WebApplication.Controllers
 
         public ActionResult Shows(string channel, string date)
         {
+            // Cookie
+            HttpCookie cookie = new HttpCookie("date");
+            cookie.Value = date;
+            cookie.Expires = DateTime.Now.AddMinutes(60.0);
+            HttpContext.Response.SetCookie(cookie);
+
+
             var result = jsUnitOfWork.ProgramRepository.ListOfJsonProgram(date, channel);
             IndexHomeVM model = new IndexHomeVM(channel) {
                 ProgramJsonList = result,
