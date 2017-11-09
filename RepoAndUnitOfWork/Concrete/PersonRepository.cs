@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using RepoAndUnitOfWork.Security;
+using System.Linq.Expressions;
 
 namespace RepoAndUnitOfWork.Concrete
 {
@@ -34,6 +35,7 @@ namespace RepoAndUnitOfWork.Concrete
 
             return role.Any();
         }
+
         private bool CreateHash(string password, string storedPass)
         {
             string storedPassword = storedPass;

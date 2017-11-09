@@ -175,11 +175,21 @@ namespace WebApplication.Controllers
             Person person = new Person();
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
 
-            PersonProgram pp = unitOfWork.PersonProgramRepository.Find()
-            List<Person> pr  = unitOfWork.PersonRepository.Find(x => x.Program.Any(p => p.Id == person.Id)).ToList();
+            //PersonProgram pp = unitOfWork.PersonProgramRepository.Find()
+            //List<Person> pr  = unitOfWork.PersonRepository.Find(x => x.Program.Any(p => p.Id == person.Id)).ToList();
 
-            return PartialView("_ViewList", pr);
+            ProgramDbContext db = new ProgramDbContext();
+            //var program = unitOfWork.PersonProgramRepository.Find(x => x.Person.Id == person.Id).SelectMany(x => x.Program);
+
+            //var program = unitOfWork.PersonProgramRepository.Find(x => x.Person_Id == person.Id).Select(x => x.Program_id);
+
+            var program = from c in db.PersonProgram
+                          join o in db.Program on c.Program_id equals o.Id
+                          where c.Person_Id == person.Id
+                          select new { c.Program };
+
+            var newList = program.ToList();
+            return PartialView("_ViewList", newList);
         }
     }
-    
 }
