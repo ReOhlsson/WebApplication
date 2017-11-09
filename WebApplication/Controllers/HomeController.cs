@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
             return PartialView("Shows", model);
         }
 
-        public ActionResult ShowsPop(string title, long start, long stop,  string desc, string channel, string category)
+        public ActionResult ShowsPop(string title, long start, long stop,  string desc, string channel, string category, string starttime, string endtime)
         {
             Program p = new Program();
             p.Title = title;
@@ -50,6 +50,8 @@ namespace WebApplication.Controllers
             p.Description = desc;
             p.Categories = category;
             p.Picture = "https://images.pexels.com/photos/239533/pexels-photo-239533.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+            p.Start_Time_String = starttime;
+            p.End_time_string = endtime;
 
             var c = category.Split('/').ToArray();
 
@@ -114,9 +116,9 @@ namespace WebApplication.Controllers
         [Authorize]
         public ActionResult MyPage()
         {
-            //var model = jsUnitOfWork.ProgramRepository.ListOfJsonProgram("2017-11-01", "tv3");
             return View();
         }
+
         public ActionResult ShowDays()
         {
             DaysVM model = new DaysVM();
@@ -134,7 +136,7 @@ namespace WebApplication.Controllers
             return PartialView("_NewsShows", indexHome); 
         }
 
-        public ActionResult CreateViewList(string title, long start, long stop, string desc, string channel, string category)
+        public ActionResult CreateViewList(string title, long start, long stop, string desc, string channel, string category, string starttime, string endtime)
         {
             Person person = new Person();
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
@@ -191,8 +193,7 @@ namespace WebApplication.Controllers
 
             return PartialView("_ViewList", newList);
         }
-
-        [HttpPost]
+     
         public ActionResult DeleteProgram(int id)
         {
             var person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
@@ -225,8 +226,7 @@ namespace WebApplication.Controllers
 
             return PartialView("_EditorRecommendation", newList);
         }
-
-        [HttpPost]
+   
         public ActionResult RemoveEditorRecommendation(int id)
         {
             Program program = unitOfWork.ProgramRepository.Find(x => x.Id == id).FirstOrDefault();
@@ -236,5 +236,58 @@ namespace WebApplication.Controllers
 
             return RedirectToAction("GetEditorList");
         }
+
+        public ActionResult CreateEditorRecommendationList(string title, long start, long stop, string desc, string channel, string category, string starttime, string endtime)
+        {
+            Program program = new Program();
+            program = unitOfWork.ProgramRepository.Find(p => p.Title == title && p.Start_time == start).FirstOrDefault();
+
+
+            if (program == null)
+            {
+                program.Title = title;
+                program.Start_time = start;
+                program.End_time = stop;
+                program.Description = desc;
+                program.Channel = channel;
+                program.Categories = category;
+                program.Editor_recommendation = true;
+                program.Click += 1;
+                program.Picture = "https://images.pexels.com/photos/239533/pexels-photo-239533.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+                program.Start_Time_String = starttime;
+                program.End_time_string = endtime;
+
+                try
+                {
+                    unitOfWork.ProgramRepository.Create(program);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            else
+            {
+                program.Editor_recommendation = true;
+
+                try
+                {
+                    unitOfWork.ProgramRepository.Update(program);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
+            return View();
+        }
+
     }
 }

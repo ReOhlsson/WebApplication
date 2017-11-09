@@ -6,17 +6,16 @@ function showPopUp(program) {
     var desc = program.getAttribute("data-desc")
     var channel = program.getAttribute("data-channel")
     var category = program.getAttribute("data-category")
+    var timeStart = program.getAttribute("data-timeStart")
+    var timeStop = program.getAttribute("data-timeEnd")
 
     $.ajax({
         type: "GET",
         url: "/home/showspop",
-        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category :category },
+        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category, starttime: timeStart, endtime: timeStop },
         async: false,
         success: function (data) {
             document.getElementById("programPopup").innerHTML = data;
-        },
-        error: function () {
-            alert("Funkar inte!");
         }
     });
 }
@@ -38,17 +37,16 @@ function CreateViewList(program) {
     var desc = program.getAttribute("data-desc")
     var channel = program.getAttribute("data-channel")
     var category = program.getAttribute("data-category")
+    var timeStart = program.getAttribute("data-timeStart")
+    var timeStop = program.getAttribute("data-timeEnd")
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "/home/createviewlist",
-        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category },
+        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category, starttime: timeStart, endtime: timeStop },
         async: false,
         success: function () {
             closePopUp();
-        },
-        error: function () {
-            alert("Funkar inte!");
         }
     });
 }
@@ -100,6 +98,27 @@ function removeEditorRecommendation(program) {
         success: function (data) {
             $('.popover-content').empty()
             GetEditorList();
+        }
+    });
+}
+
+function CreateEditorRecommendation(program) {
+    var title = program.getAttribute("data-title")
+    var start = program.getAttribute("data-start")
+    var stop = program.getAttribute("data-stop")
+    var desc = program.getAttribute("data-desc")
+    var channel = program.getAttribute("data-channel")
+    var category = program.getAttribute("data-category")
+    var timeStart = program.getAttribute("data-timeStart")
+    var timeStop = program.getAttribute("data-timeEnd")
+
+    $.ajax({
+        type: "POST",
+        url: "/home/createeditorrecommendationlist",
+        data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category, starttime: timeStart, endtime: timeStop },
+        async: false,
+        success: function () {
+            closePopUp();
         }
     });
 }

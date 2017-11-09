@@ -27,6 +27,8 @@ namespace RepoAndUnitOfWork.Entities
         public string Picture { get; set; }
         public string Description { get; set; }
         public string Categories { get; set; }
+        public string Start_Time_String { get; set; }
+        public string End_time_string { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Person> Person { get; set; }

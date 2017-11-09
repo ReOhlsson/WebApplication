@@ -12,14 +12,13 @@ using RepoAndUnitOfWork.Security;
 
 namespace WebApplication.Controllers
 {
-    
+    [AuthorizeRole("Admin")]
     public class PeopleController : Controller
     {
         private ProgramDbContext db = new ProgramDbContext();
 
 
         // GET: People
-        [AuthorizeRole("Admin")]
         public ActionResult Index()
         {
             var model = db.Person.Include(p => p.Role);
