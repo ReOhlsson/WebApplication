@@ -62,7 +62,7 @@ function GetViewList(program) {
         url: "/home/getviewlist",
         data: { userName: userName },
         success: function (data) {
-            $(".popover-content").innerHTML = data;
+            $(".popover-content").append(data);
         }
     });
 }
