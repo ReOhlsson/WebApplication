@@ -31,6 +31,9 @@ function changeShowSchedual(days) {
             data: { channel: value, date : date },
             async: false,
             success: function (data) {
+                
+            },
+            complete: function (data) {
                 $('.number' + index).html(data);
             }
         });

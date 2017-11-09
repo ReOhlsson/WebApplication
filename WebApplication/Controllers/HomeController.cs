@@ -178,10 +178,11 @@ namespace WebApplication.Controllers
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
 
             ProgramDbContext db = new ProgramDbContext();
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
             var program = from c in db.PersonProgram
                           join o in db.Program on c.Program_id equals o.Id
-                          where c.Person_Id == person.Id
+                          where ((c.Person_Id == person.Id) && (o.End_time > unixTimestamp))
                           select c.Program as Program;
 
             var newList = program.ToList();
@@ -217,7 +218,8 @@ namespace WebApplication.Controllers
 
         public ActionResult GetEditorList()
         {
-            List<Program> newList = unitOfWork.ProgramRepository.Find(x => x.Editor_recommendation == true).ToList();
+            //List<Program> newList = unitOfWork.ProgramRepository.Find(x => x.Editor_recommendation == true).ToList();
+            var newList = unitOfWork.ProgramRepository.GetEditorPrograms();
 
             foreach (var item in newList)
             {

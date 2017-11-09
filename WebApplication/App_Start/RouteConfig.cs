@@ -14,6 +14,13 @@ namespace WebApplication
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            "accounts",
+            "account/login/{id}",
+            new { controller = "Channel", action = "Login" },
+            new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
             name: "channels", 
             url: "kanaler/kanal/{channel}",
             defaults: new { controller = "Channel", action = "Index"}

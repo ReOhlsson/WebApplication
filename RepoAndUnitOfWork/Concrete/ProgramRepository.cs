@@ -13,6 +13,13 @@ namespace RepoAndUnitOfWork.Concrete
         public ProgramRepository(ProgramDbContext pb) : base(pb)
         {
         }
+
+        public IEnumerable<Program> GetEditorPrograms()
+        {
+            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            return dbContext.Program.Where(x => x.Editor_recommendation == true && x.End_time > unixTimestamp);
+        }
+
         public IEnumerable<Program> GetMostPopular(int number)
         {
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;

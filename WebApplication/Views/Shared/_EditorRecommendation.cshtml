@@ -1,6 +1,7 @@
-﻿@model  List<RepoAndUnitOfWork.Entities.Program>
+﻿@*@model  List<RepoAndUnitOfWork.Entities.Program>*@
+@model  IEnumerable<RepoAndUnitOfWork.Entities.Program>
 
 @foreach (var program in Model)
 {
-    <img class="viewListLogo" src="@("http://logos.xmltv.se/"+program.Channel+".png")" /><p>@program.Title   @program.Start_time<span data-programId="@program.Id" class="close" onclick="removeEditorRecommendation(this)">&times;</span> </p>
+    <img class="viewListLogo" src="@("http://logos.xmltv.se/"+program.Channel+".png")" /><p>@program.Start_Time_String @program.Title<span data-programId="@program.Id" class="close" onclick="removeEditorRecommendation(this)">&times;</span> </p>
 }

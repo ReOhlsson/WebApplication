@@ -10,9 +10,9 @@
 </div>
 @foreach (var item in Model.ProgramJsonList)
 {
-    <div class="row">
+    <div class="row channel">
         <div class="col-lg-2">
-            <h4>BILD</h4>
+            <img src="~/images/300.png" alt="Alternate Text" style="width:100%;" />
         </div>
         <div class="col-lg-10">
             <ul>
@@ -20,8 +20,9 @@
                     <div>
                         <h4>@item.title.sv</h4>
                         <p>@item.desc.sv</p>
-                        @if (item.credits.actor.Count != 0 || item.credits.director.Count != 0)
-                        { <span class="toogle-showmore">Visa mer</span> }
+                        @if (item.credits.actor.Count != 0 || item.credits.director.Count != 0 || item.credits.writer.Count != 0)
+                        { <input type='checkbox' style='display: none' id=@item.start>
+                            <label for=@item.start>Visa</label>}
                         <div class="row showmore">
                             <div class="col-lg-4">
                                 <div class="actors">
@@ -57,6 +58,7 @@
             </ul>
         </div>
     </div>
+    <br />
 }
 
 

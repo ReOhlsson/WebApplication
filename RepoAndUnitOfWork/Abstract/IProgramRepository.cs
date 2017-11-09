@@ -13,5 +13,7 @@ namespace RepoAndUnitOfWork.Abstract
     {
         IEnumerable<Program> GetMostPopular(int number);
         IEnumerable<Program> GetProgramNews(int number);
+        IEnumerable<Program> GetEditorPrograms();
+        //IEnumerable<Program> GetProgramNews(int number);
     }
 }

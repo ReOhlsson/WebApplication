@@ -46,6 +46,8 @@ function CreateViewList(program) {
         data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category, starttime: timeStart, endtime: timeStop },
         async: false,
         success: function () {
+        },
+        complete: function (data) {
             closePopUp();
         }
     });
@@ -118,6 +120,8 @@ function CreateEditorRecommendation(program) {
         data: { title: title, start: start, stop: stop, desc: desc, channel: channel, category: category, starttime: timeStart, endtime: timeStop },
         async: false,
         success: function () {
+        },
+        complete: function (data) {
             closePopUp();
         }
     });

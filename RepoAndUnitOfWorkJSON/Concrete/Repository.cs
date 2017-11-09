@@ -57,7 +57,11 @@ namespace RepoAndUnitOfWorkJSON.Concrete
             {
                 DateTime dateTime = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
                 dateTime = dateTime.AddSeconds(Convert.ToInt32(p.start));
+
+                DateTime dateTimeStop = new DateTime(1970, 1, 1, 1, 0, 0, 0, DateTimeKind.Local);
+                dateTimeStop = dateTimeStop.AddSeconds(Convert.ToInt32(p.stop));
                 p.StartTime = dateTime;
+                p.StopTime = dateTimeStop;
 
                 int result = DateTime.Compare(dateTime, DateTime.Now);
 
