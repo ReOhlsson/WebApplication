@@ -170,7 +170,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public ActionResult GetViewList(string userName)
+        public ActionResult GetViewList()
         {
             Person person = new Person();
             person = unitOfWork.PersonRepository.Find(x => x.Username == User.Identity.Name).FirstOrDefault();
@@ -191,6 +191,7 @@ namespace WebApplication.Controllers
 
             return PartialView("_ViewList", newList);
         }
+
         [HttpPost]
         public ActionResult DeleteProgram(int id)
         {
@@ -211,6 +212,29 @@ namespace WebApplication.Controllers
             }
 
             return RedirectToAction("GetViewList");
+        }
+
+        public ActionResult GetEditorList()
+        {
+            List<Program> newList = unitOfWork.ProgramRepository.Find(x => x.Editor_recommendation == true).ToList();
+
+            foreach (var item in newList)
+            {
+                item.Channel = item.Channel.Trim();
+            }
+
+            return PartialView("_EditorRecommendation", newList);
+        }
+
+        [HttpPost]
+        public ActionResult RemoveEditorRecommendation(int id)
+        {
+            Program program = unitOfWork.ProgramRepository.Find(x => x.Id == id).FirstOrDefault();
+            program.Editor_recommendation = false;
+            unitOfWork.ProgramRepository.Update(program);
+            unitOfWork.Commit();
+
+            return RedirectToAction("GetEditorList");
         }
     }
 }

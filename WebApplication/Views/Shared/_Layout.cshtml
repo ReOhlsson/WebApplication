@@ -23,20 +23,28 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Min sida", "MyPage", "Home")</li>
-                    @if(User.Identity.IsAuthenticated)
-                    {                   
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (Roles.IsUserInRole(User.Identity.Name, "Member"))
+                        {                    
+                            <button type="button" class="btn btn-primary" id="myViewList" onclick="GetViewList(this)" title="" data-name="@User.Identity.Name" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="Program">Min Lista</button>
+                        }
+
+                        if (Roles.IsUserInRole(User.Identity.Name, "Editor"))
+                        {
+                            <button type="button" class="btn btn-primary" id="newsEditor" onclick="GetEditorList(this)" title="" data-name="@User.Identity.Name" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="Program">Nyhetspuffar</button>
+                        }
+
                         if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
                         {
                             <li>@Html.ActionLink("Administrera", "Index", "People")</li>
+                            <button type="button" class="btn btn-primary" id="newsEditor" onclick="GetEditorList(this)" title="" data-name="@User.Identity.Name" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="Program">Nyhetspuffar</button>
                         }
+
                         <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
-                        <button type="button" class="btn btn-primary" id ="myViewList" onclick="GetViewList(this)" title="" data-name="@User.Identity.Name" data-container="body" data-toggle="popover" data-placement="bottom" 
-                         data-original-title="Popover Title">Min Lista</button>
-
-                         
-              @*@Html.Action("GetViewList", "Home")*@
                     }
-
+             
                 </ul>
             </div>
         </div>
