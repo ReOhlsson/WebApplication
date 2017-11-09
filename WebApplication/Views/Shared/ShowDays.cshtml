@@ -2,5 +2,5 @@
 
 @foreach (var item in Model.ListOfDays)
 {
-    <li class="days"><a class="showDayShow" onclick="changeShowSchedual(this)" data-dateTime="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</a></li>
+    <li class="days nav-item"><a class="showDayShow nav-link" onclick="changeShowSchedual(this)" data-dateTime="@item.Date.ToShortDateString()">@item.Day @item.Date.ToShortDateString()</a></li>
 }

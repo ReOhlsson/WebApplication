@@ -144,12 +144,12 @@ ul, ol {
     margin: 0;
     padding: 0;
 }*/
-.menudays {
-    font-size:13px;
+/*.menudays {
+    font-size:12px;
 }
 .menudays a {
     font-weight:bold;
-}
+}*/
 .showmore {
     display:none;
 }
