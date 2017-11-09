@@ -186,7 +186,7 @@ namespace WebApplication.Controllers
             var program = (from c in db.PersonProgram
                           join o in db.Program on c.Program_id equals o.Id
                           where c.Person_Id == person.Id
-                          select new { c.Program }).ToList();
+                          select c.Program as Program;
 
             var newList = program.ToList();
            
